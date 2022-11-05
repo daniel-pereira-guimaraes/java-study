@@ -1,14 +1,18 @@
 package java_study;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 public class DateTimeStudy {
 
 	public static void main(String[] args) {
 		makeLocalDateTime();
+		formatDateTime();
 	}
 	
 	private static void makeLocalDateTime() {
@@ -30,7 +34,8 @@ public class DateTimeStudy {
 		final LocalDateTime v09 = LocalDateTime.of(2022, 11, 4, 20, 4, 15);
 		final LocalDateTime v10 = LocalDateTime.of(v02,  v06);
 		final LocalDateTime v11 = LocalDateTime.parse("04/11/2022 20:29", fmt03);
-		
+
+		System.out.println("--- makeDateTime ---\n");
 		System.out.println("v01: " + v01);
 		System.out.println("v02: " + v02);
 		System.out.println("v03: " + v03);
@@ -42,6 +47,66 @@ public class DateTimeStudy {
 		System.out.println("v09: " + v09);
 		System.out.println("v10: " + v10);
 		System.out.println("v11: " + v11);
+		System.out.println();
 	}
+	
+	private static void formatDateTime() {
 
+		final ZoneId saoPaulo = ZoneId.of("America/Sao_Paulo");
+		final ZoneId portugal = ZoneId.of("Portugal");
+		final ZoneId tokyo = ZoneId.of(ZoneId.SHORT_IDS.get("JST"));
+		final ZoneId acre = ZoneId.of("-05:00");
+
+		final DateTimeFormatter fmt01 = DateTimeFormatter.ofPattern("dd/MM/yy");
+		final DateTimeFormatter fmt02 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		final DateTimeFormatter fmt03 = DateTimeFormatter.ofPattern("dd/MMM/yyyy");
+		final DateTimeFormatter fmt04 = DateTimeFormatter.ofPattern("dd 'de' MMMM 'de' yyyy");
+		final DateTimeFormatter fmt05 = DateTimeFormatter.ofPattern("E, dd 'de' MMM 'de' yyyy");
+		final DateTimeFormatter fmt06 = DateTimeFormatter.ofPattern("EEEE, dd 'de' MMMM 'de' yyyy");
+		final DateTimeFormatter fmt07 = DateTimeFormatter.ofPattern("HH:mm");
+		final DateTimeFormatter fmt08 = DateTimeFormatter.ofPattern("KK:mm a");
+		final DateTimeFormatter fmt09 = DateTimeFormatter.ofPattern("HH:mm:ss");
+		final DateTimeFormatter fmt10 = DateTimeFormatter.ofPattern("HH:mm:ss.SSS");
+		final DateTimeFormatter fmt11 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+		final DateTimeFormatter fmt12 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+		final DateTimeFormatter fmt13 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss.SSSSS");
+		
+		final DateTimeFormatter fmt14 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss XXX (VV)").withZone(saoPaulo);
+		final DateTimeFormatter fmt15 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss XXX (VV)").withZone(portugal);
+		final DateTimeFormatter fmt16 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss XXX (VV)").withZone(tokyo);
+		final DateTimeFormatter fmt17 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss XXX").withZone(acre);
+		final DateTimeFormatter fmt18 = DateTimeFormatter.ofPattern("EEEE, dd - MMMM - yyyy").withLocale(Locale.ITALY);
+		final DateTimeFormatter fmt19 = DateTimeFormatter.ofPattern("EEEE, dd - MMMM - yyyy").withLocale(Locale.ENGLISH);
+		final DateTimeFormatter fmt20 = DateTimeFormatter.ofPattern("EEEE, dd - MMMM - yyyy").withLocale(Locale.getDefault());
+		
+		final LocalDateTime localDateTime = LocalDateTime.now();
+		final Instant instant = Instant.now();
+		
+		System.out.println("--- formatDateTime ---\n");
+		System.out.println("fmt01: " + localDateTime.format(fmt01));
+		System.out.println("fmt02: " + localDateTime.format(fmt02));
+		System.out.println("fmt03: " + localDateTime.format(fmt03));
+		System.out.println("fmt04: " + localDateTime.format(fmt04));
+		System.out.println("fmt05: " + localDateTime.format(fmt05));
+		System.out.println("fmt06: " + localDateTime.format(fmt06));
+		System.out.println("fmt07: " + localDateTime.format(fmt07));
+		System.out.println("fmt08: " + localDateTime.format(fmt08));
+		System.out.println("fmt09: " + localDateTime.format(fmt09));
+		System.out.println("fmt10: " + localDateTime.format(fmt10));
+		System.out.println("fmt11: " + localDateTime.format(fmt11));
+		System.out.println("fmt12: " + localDateTime.format(fmt12));
+		System.out.println("fmt13: " + localDateTime.format(fmt13));
+
+		System.out.println("fmt14: " + fmt14.format(instant));
+		System.out.println("fmt15: " + fmt15.format(instant));
+		System.out.println("fmt16: " + fmt16.format(instant));
+		System.out.println("fmt17: " + fmt17.format(instant));
+		
+		System.out.println("fmt18: " + fmt18.format(localDateTime));
+		System.out.println("fmt19: " + fmt19.format(localDateTime));
+		System.out.println("fmt20: " + fmt20.format(localDateTime));
+		
+		System.out.println();
+	}
+	
 }
