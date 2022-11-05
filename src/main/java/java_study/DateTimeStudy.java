@@ -1,5 +1,6 @@
 package java_study;
 
+import java.time.DayOfWeek;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -117,8 +118,11 @@ public class DateTimeStudy {
 	}
 
 	private static void dateTimeOperations() {
+		System.out.println("--- dateTimeOperations ---\n");
 		System.out.println("startOfMonth: " + startOfMonth(LocalDate.now()));
 		System.out.println("endOfMonth: " + endOfMonth(LocalDate.now()));
+		System.out.println("priorMonday: " + priorMonday(LocalDate.now()));
+		System.out.println();
 	}
 	
 	private static LocalDate startOfMonth(Temporal temporal) {
@@ -132,6 +136,13 @@ public class DateTimeStudy {
 		final int month = nextMonthDate.getMonthValue();
 		final int year = nextMonthDate.getYear();
 		return LocalDate.of(year, month, 1).minusDays(1);
+	}
+	
+	private static LocalDate priorMonday(Temporal temporal) {
+		LocalDate localDate = LocalDate.from(temporal).minusDays(1);
+		while (localDate.getDayOfWeek() != DayOfWeek.MONDAY)
+			localDate = localDate.minusDays(1);
+		return localDate;
 	}
 	
 }
