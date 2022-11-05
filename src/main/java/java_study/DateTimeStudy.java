@@ -122,9 +122,9 @@ public class DateTimeStudy {
 	}
 	
 	private static LocalDate startOfMonth(Temporal temporal) {
-		final int m = Month.from(temporal).getValue();
-		final int y = Year.from(temporal).getValue();
-		return LocalDate.of(y, m, 1);
+		final int month = Month.from(temporal).getValue();
+		final int year = Year.from(temporal).getValue();
+		return LocalDate.of(year, month, 1);
 	}
 	
 	private static LocalDate endOfMonth(Temporal temporal) {
