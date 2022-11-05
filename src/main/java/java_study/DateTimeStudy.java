@@ -11,6 +11,7 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.Temporal;
 import java.time.temporal.TemporalAccessor;
+import java.time.temporal.TemporalAmount;
 import java.util.Locale;
 
 public class DateTimeStudy {
@@ -116,13 +117,21 @@ public class DateTimeStudy {
 	}
 
 	private static void dateTimeOperations() {
-		System.out.println("startOfMonth: " + startOfMonth(LocalDateTime.now()));
+		System.out.println("startOfMonth: " + startOfMonth(LocalDate.now()));
+		System.out.println("endOfMonth: " + endOfMonth(LocalDate.now()));
 	}
 	
 	private static LocalDate startOfMonth(Temporal temporal) {
 		final int m = Month.from(temporal).getValue();
 		final int y = Year.from(temporal).getValue();
 		return LocalDate.of(y, m, 1);
+	}
+	
+	private static LocalDate endOfMonth(Temporal temporal) {
+		final LocalDate nextMonthDate = LocalDate.from(temporal).plusMonths(1);
+		final int month = nextMonthDate.getMonthValue();
+		final int year = nextMonthDate.getYear();
+		return LocalDate.of(year, month, 1).minusDays(1);
 	}
 	
 }
