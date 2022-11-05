@@ -6,13 +6,11 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
-import java.time.MonthDay;
 import java.time.Year;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.time.temporal.Temporal;
-import java.time.temporal.TemporalAccessor;
-import java.time.temporal.TemporalAmount;
 import java.util.Locale;
 
 public class DateTimeStudy {
@@ -21,6 +19,7 @@ public class DateTimeStudy {
 		makeLocalDateTime();
 		formatDateTime();
 		dateTimeOperations();
+		durations();
 	}
 	
 	private static void makeLocalDateTime() {
@@ -127,6 +126,24 @@ public class DateTimeStudy {
 		System.out.println("priorDayOfWeek(SATURDAY, now): " + priorDayOfWeek(DayOfWeek.SATURDAY, LocalDate.now()));
 		System.out.println("nextDayOfWeek(MONDAY, now): " + nextDayOfWeek(DayOfWeek.MONDAY, LocalDate.now()));
 		System.out.println("nextDayOfWeek(SATURDAY, now): " + nextDayOfWeek(DayOfWeek.SATURDAY, LocalDate.now()));
+		System.out.println();
+	}
+	
+	private static void durations() {
+		LocalDateTime startDateTime = LocalDateTime.now().minusYears(5);
+		LocalDateTime endDateTime = LocalDateTime.now();
+
+		System.out.println("--- durations ---\n");
+		System.out.println("Years: " + ChronoUnit.YEARS.between(startDateTime, endDateTime));
+		System.out.println("Months: " + ChronoUnit.MONTHS.between(startDateTime, endDateTime));
+		System.out.println("Weeks: " + ChronoUnit.WEEKS.between(startDateTime, endDateTime));
+		System.out.println("Days: " + ChronoUnit.DAYS.between(startDateTime, endDateTime));
+		System.out.println("Hours: " + ChronoUnit.HOURS.between(startDateTime, endDateTime));
+		System.out.println("Minutes: " + ChronoUnit.MINUTES.between(startDateTime, endDateTime));
+		System.out.println("Seconds: " + ChronoUnit.SECONDS.between(startDateTime, endDateTime));
+		System.out.println("Milliseconds: " + ChronoUnit.MILLIS.between(startDateTime, endDateTime));
+		System.out.println("Microseconds: " + ChronoUnit.MICROS.between(startDateTime, endDateTime));
+		
 		System.out.println();
 	}
 	
