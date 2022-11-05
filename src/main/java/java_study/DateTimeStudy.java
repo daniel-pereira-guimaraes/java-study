@@ -122,6 +122,7 @@ public class DateTimeStudy {
 		System.out.println("startOfMonth: " + startOfMonth(LocalDate.now()));
 		System.out.println("endOfMonth: " + endOfMonth(LocalDate.now()));
 		System.out.println("priorMonday: " + priorMonday(LocalDate.now()));
+		System.out.println("nextSunday: " + nextSunday(LocalDate.now()));
 		System.out.println();
 	}
 	
@@ -142,6 +143,13 @@ public class DateTimeStudy {
 		LocalDate localDate = LocalDate.from(temporal).minusDays(1);
 		while (localDate.getDayOfWeek() != DayOfWeek.MONDAY)
 			localDate = localDate.minusDays(1);
+		return localDate;
+	}
+	
+	private static LocalDate nextSunday(Temporal temporal) {
+		LocalDate localDate = LocalDate.from(temporal).plusDays(1);
+		while (localDate.getDayOfWeek() != DayOfWeek.SUNDAY)
+			localDate = localDate.plusDays(1);
 		return localDate;
 	}
 	
