@@ -4,8 +4,13 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.Month;
+import java.time.MonthDay;
+import java.time.Year;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.Temporal;
+import java.time.temporal.TemporalAccessor;
 import java.util.Locale;
 
 public class DateTimeStudy {
@@ -13,6 +18,7 @@ public class DateTimeStudy {
 	public static void main(String[] args) {
 		makeLocalDateTime();
 		formatDateTime();
+		dateTimeOperations();
 	}
 	
 	private static void makeLocalDateTime() {
@@ -107,6 +113,16 @@ public class DateTimeStudy {
 		System.out.println("fmt20: " + fmt20.format(localDateTime));
 		
 		System.out.println();
+	}
+
+	private static void dateTimeOperations() {
+		System.out.println("startOfMonth: " + startOfMonth(LocalDateTime.now()));
+	}
+	
+	private static LocalDate startOfMonth(Temporal temporal) {
+		final int m = Month.from(temporal).getValue();
+		final int y = Year.from(temporal).getValue();
+		return LocalDate.of(y, m, 1);
 	}
 	
 }
