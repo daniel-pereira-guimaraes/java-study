@@ -20,6 +20,7 @@ public class DateTimeStudy {
 		formatDateTime();
 		dateTimeOperations();
 		durations();
+		minusPlusDateTime();
 	}
 	
 	private static void makeLocalDateTime() {
@@ -144,6 +145,51 @@ public class DateTimeStudy {
 		System.out.println("Milliseconds: " + ChronoUnit.MILLIS.between(startDateTime, endDateTime));
 		System.out.println("Microseconds: " + ChronoUnit.MICROS.between(startDateTime, endDateTime));
 		
+		System.out.println();
+	}
+	
+	private static void minusPlusDateTime() {
+		
+		LocalDateTime dt00 = LocalDateTime.now();
+		
+		LocalDateTime dt01 = dt00.minusSeconds(5);
+		LocalDateTime dt02 = dt00.minusMinutes(5);
+		LocalDateTime dt03 = dt00.minusHours(5);
+		LocalDateTime dt04 = dt00.minusDays(5);
+		LocalDateTime dt05 = dt00.minusWeeks(5);
+		LocalDateTime dt06 = dt00.minusMonths(5);
+		LocalDateTime dt07 = dt00.minusYears(5);
+
+		LocalDateTime dt11 = dt00.plusSeconds(5);
+		LocalDateTime dt12 = dt00.plusMinutes(5);
+		LocalDateTime dt13 = dt00.plusHours(5);
+		LocalDateTime dt14 = dt00.plusDays(5);
+		LocalDateTime dt15 = dt00.plusWeeks(5);
+		LocalDateTime dt16 = dt00.plusMonths(5);
+		LocalDateTime dt17 = dt00.plusYears(5);
+	
+		System.out.println("--- minusPlusDateTime ---");
+		System.out.println();
+		
+		System.out.println("dt00: " + dt00);
+		System.out.println();
+
+		System.out.println("dt01: " + dt01);
+		System.out.println("dt02: " + dt02);
+		System.out.println("dt03: " + dt03);
+		System.out.println("dt04: " + dt04);
+		System.out.println("dt05: " + dt05);
+		System.out.println("dt06: " + dt06);
+		System.out.println("dt07: " + dt07);
+		System.out.println();
+	
+		System.out.println("dt11: " + dt11);
+		System.out.println("dt12: " + dt12);
+		System.out.println("dt13: " + dt13);
+		System.out.println("dt14: " + dt14);
+		System.out.println("dt15: " + dt15);
+		System.out.println("dt16: " + dt16);
+		System.out.println("dt17: " + dt17);
 		System.out.println();
 	}
 	
