@@ -206,6 +206,8 @@ public class DateTimeStudy {
 		LocalDateTime dt04 = LocalDateTime.ofInstant(dt00, ZoneId.of("America/Sao_Paulo"));
 		LocalDateTime dt05 = LocalDateTime.ofInstant(dt00, ZoneId.of("-03:00"));
 		LocalDateTime dt06 = LocalDateTime.ofInstant(dt00, ZoneId.systemDefault());
+		Instant dt07 = dt00.minus(7, ChronoUnit.DAYS);
+		Instant dt08 = dt00.plus(7, ChronoUnit.DAYS);
 
 		System.out.println("--- instantOperations ---");
 		System.out.println();
@@ -216,6 +218,8 @@ public class DateTimeStudy {
 		System.out.println("dt04: " + dt04);
 		System.out.println("dt05: " + dt05);
 		System.out.println("dt06: " + dt06);
+		System.out.println("dt07: " + dt07);
+		System.out.println("dt08: " + dt08);
 		System.out.println();
 	}
 	
