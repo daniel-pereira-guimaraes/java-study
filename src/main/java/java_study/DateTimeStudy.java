@@ -124,6 +124,7 @@ public class DateTimeStudy {
 
 	private static void dateTimeOperations() {
 		System.out.println("--- dateTimeOperations ---\n");
+		System.out.println("LocalData.atTime: " + LocalDate.now().atTime(20,44));
 		System.out.println("startOfMonth: " + startOfMonth(LocalDate.now()));
 		System.out.println("endOfMonth: " + endOfMonth(LocalDate.now()));
 		System.out.println("priorMonday: " + priorMonday(LocalDate.now()));
