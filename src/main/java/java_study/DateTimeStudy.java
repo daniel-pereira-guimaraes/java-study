@@ -1,6 +1,7 @@
 package java_study;
 
 import java.time.DayOfWeek;
+import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -137,6 +138,7 @@ public class DateTimeStudy {
 	private static void durations() {
 		LocalDateTime startDateTime = LocalDateTime.now().minusYears(5);
 		LocalDateTime endDateTime = LocalDateTime.now();
+		Duration duration = Duration.between(startDateTime, endDateTime);
 
 		System.out.println("--- durations ---\n");
 		System.out.println("Years: " + ChronoUnit.YEARS.between(startDateTime, endDateTime));
@@ -148,6 +150,10 @@ public class DateTimeStudy {
 		System.out.println("Seconds: " + ChronoUnit.SECONDS.between(startDateTime, endDateTime));
 		System.out.println("Milliseconds: " + ChronoUnit.MILLIS.between(startDateTime, endDateTime));
 		System.out.println("Microseconds: " + ChronoUnit.MICROS.between(startDateTime, endDateTime));
+		System.out.println("durarion - days: " + duration.toDays());
+		System.out.println("durarion - hours: " + duration.toHours());
+		System.out.println("durarion - minutes: " + duration.toMinutes());
+		System.out.println("durarion - seconds: " + duration.toSeconds());
 		
 		System.out.println();
 	}
