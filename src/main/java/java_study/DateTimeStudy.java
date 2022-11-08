@@ -8,6 +8,7 @@ import java.time.LocalTime;
 import java.time.Month;
 import java.time.Year;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.Temporal;
@@ -21,6 +22,7 @@ public class DateTimeStudy {
 		dateTimeOperations();
 		durations();
 		minusPlusDateTime();
+		instantOperations();
 	}
 	
 	private static void makeLocalDateTime() {
@@ -193,6 +195,28 @@ public class DateTimeStudy {
 		System.out.println();
 	}
 	
+	private static void instantOperations() {
+		
+		Instant dt00 = Instant.now();
+		ZonedDateTime dt01 = dt00.atZone(ZoneId.of("America/Sao_Paulo"));
+		Instant dt02 = Instant.parse("2022-11-07T23:51:00Z");
+		Instant dt03 = Instant.parse("2022-11-07T19:51:00-04:00");
+		LocalDateTime dt04 = LocalDateTime.ofInstant(dt00, ZoneId.of("America/Sao_Paulo"));
+		LocalDateTime dt05 = LocalDateTime.ofInstant(dt00, ZoneId.of("-03:00"));
+		LocalDateTime dt06 = LocalDateTime.ofInstant(dt00, ZoneId.systemDefault());
+
+		System.out.println("--- instantOperations ---");
+		System.out.println();
+		System.out.println("dt00: " + dt00);
+		System.out.println("dt01: " + dt01);
+		System.out.println("dt02: " + dt02);
+		System.out.println("dt03: " + dt03);
+		System.out.println("dt04: " + dt04);
+		System.out.println("dt05: " + dt05);
+		System.out.println("dt06: " + dt06);
+		System.out.println();
+	}
+	
 	private static LocalDate startOfMonth(Temporal temporal) {
 		final int month = Month.from(temporal).getValue();
 		final int year = Year.from(temporal).getValue();
@@ -233,5 +257,6 @@ public class DateTimeStudy {
 			localDate = localDate.plusDays(1);
 		return localDate;
 	}
+	
 	
 }
