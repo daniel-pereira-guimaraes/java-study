@@ -13,6 +13,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.Temporal;
 import java.util.Locale;
+import java.util.Set;
 
 public class DateTimeStudy {
 
@@ -23,6 +24,7 @@ public class DateTimeStudy {
 		durations();
 		minusPlusDateTime();
 		instantOperations();
+		showZoneIds();
 	}
 	
 	private static void makeLocalDateTime() {
@@ -216,6 +218,25 @@ public class DateTimeStudy {
 		System.out.println("dt06: " + dt06);
 		System.out.println();
 	}
+	
+	private static void showZoneIds() {
+		String defaultZone = ZoneId.systemDefault().toString();
+		Set<String> zones = ZoneId.getAvailableZoneIds();
+
+		System.out.println("--- showZoneIds ---");
+		System.out.println();
+		System.out.println("defaultZone: " + defaultZone);
+		System.out.println();
+		
+		for (String zone : zones) {
+			if (zone.equals(defaultZone))
+				zone = "*" + zone;
+			System.out.println(zone);
+		}
+		
+		System.out.println("--- Zone count: " + zones.size() + " ---");
+		System.out.println();
+	}	
 	
 	private static LocalDate startOfMonth(Temporal temporal) {
 		final int month = Month.from(temporal).getValue();
