@@ -15,6 +15,7 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.Temporal;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Set;
@@ -24,6 +25,7 @@ public class DateTimeStudy {
 
 	public static void main(String[] args) throws ParseException {
 		makeAndFormatDate();
+		calendarOperations();
 		makeLocalDateTime();
 		formatDateTime();
 		dateTimeOperations();
@@ -86,6 +88,38 @@ public class DateTimeStudy {
 		System.out.println("dt07: " + sdf3.format(dt07));
 		System.out.println("dt08: " + sdf3.format(dt08));
 		System.out.println();
+	}
+	
+	private static void calendarOperations() {
+		
+		Date dt01 = Date.from(Instant.parse("2022-11-08T20:27:05-04:00"));
+		Date dt02 = calendarAdd(dt01, Calendar.HOUR, 5);
+		Date dt03 = calendarAdd(dt01, Calendar.HOUR_OF_DAY, 5);
+		Date dt04 = calendarAdd(dt01, Calendar.HOUR, -3);
+
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(dt01);
+		int day = calendar.get(Calendar.DAY_OF_MONTH);
+		int month = calendar.get(Calendar.MONTH) + 1;
+		int year = calendar.get(Calendar.YEAR);
+		
+		System.out.println("--- calendarOperations ---");
+		System.out.println();
+		System.out.println("dt01: " + dt01);
+		System.out.println("dt02: " + dt02);
+		System.out.println("dt03: " + dt03);
+		System.out.println("dt04: " + dt04);
+		System.out.println("Day: " + day);
+		System.out.println("Month: " + month);
+		System.out.println("Year: " + year);
+		System.out.println();
+	}
+	
+	private static Date calendarAdd(Date date, int field, int value) {
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		calendar.add(field, value);
+		return calendar.getTime();
 	}
 	
 	private static void makeLocalDateTime() {
