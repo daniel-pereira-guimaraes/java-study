@@ -47,6 +47,7 @@ public class DateTimeStudy {
 		Date dt05 = sdf1.parse("08/11/2022");
 		Date dt06 = sdf2.parse("08/11/2022 20:07:15");
 		Date dt07 = sdf3.parse("08/11/2022 20:07:15");
+		Date dt08 = Date.from(Instant.parse("2022-11-08T20:07:15Z"));
 		
 		System.out.println("--- makeAndFormatDate ---");
 		System.out.println("dt01: " + dt01);
@@ -56,6 +57,7 @@ public class DateTimeStudy {
 		System.out.println("dt05: " + dt05);
 		System.out.println("dt06: " + dt06);
 		System.out.println("dt07: " + dt07);
+		System.out.println("dt08: " + dt08);
 		System.out.println("---");
 		System.out.println("dt01: " + sdf1.format(dt01));
 		System.out.println("dt02: " + sdf1.format(dt02));
@@ -64,6 +66,7 @@ public class DateTimeStudy {
 		System.out.println("dt05: " + sdf1.format(dt05));
 		System.out.println("dt06: " + sdf1.format(dt06));
 		System.out.println("dt07: " + sdf1.format(dt07));
+		System.out.println("dt08: " + sdf1.format(dt08));
 		System.out.println("---");
 		System.out.println("dt01: " + sdf2.format(dt01));
 		System.out.println("dt02: " + sdf2.format(dt02));
@@ -72,6 +75,7 @@ public class DateTimeStudy {
 		System.out.println("dt05: " + sdf2.format(dt05));
 		System.out.println("dt06: " + sdf2.format(dt06));
 		System.out.println("dt07: " + sdf2.format(dt07));
+		System.out.println("dt08: " + sdf2.format(dt08));
 		System.out.println("---");
 		System.out.println("dt01: " + sdf3.format(dt01));
 		System.out.println("dt02: " + sdf3.format(dt02));
@@ -80,6 +84,7 @@ public class DateTimeStudy {
 		System.out.println("dt05: " + sdf3.format(dt05));
 		System.out.println("dt06: " + sdf3.format(dt06));
 		System.out.println("dt07: " + sdf3.format(dt07));
+		System.out.println("dt08: " + sdf3.format(dt08));
 		System.out.println();
 	}
 	
