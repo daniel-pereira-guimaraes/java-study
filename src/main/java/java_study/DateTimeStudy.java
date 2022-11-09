@@ -42,10 +42,11 @@ public class DateTimeStudy {
 		
 		Date dt01 = new Date();
 		Date dt02 = new Date(System.currentTimeMillis());
-		Date dt03 = new Date(10L * 60L * 60L * 1000L); // 1970-01-01T10:00:00Z
-		Date dt04 = sdf1.parse("08/11/2022");
-		Date dt05 = sdf2.parse("08/11/2022 20:07:15");
-		Date dt06 = sdf3.parse("08/11/2022 20:07:15");
+		Date dt03 = new Date(0L); 						// 1970-01-01T00:00:00Z
+		Date dt04 = new Date(10L * 60L * 60L * 1000L);	// 1970-01-01T10:00:00Z
+		Date dt05 = sdf1.parse("08/11/2022");
+		Date dt06 = sdf2.parse("08/11/2022 20:07:15");
+		Date dt07 = sdf3.parse("08/11/2022 20:07:15");
 		
 		System.out.println("--- makeAndFormatDate ---");
 		System.out.println("dt01: " + dt01);
@@ -54,6 +55,7 @@ public class DateTimeStudy {
 		System.out.println("dt04: " + dt04);
 		System.out.println("dt05: " + dt05);
 		System.out.println("dt06: " + dt06);
+		System.out.println("dt07: " + dt07);
 		System.out.println("---");
 		System.out.println("dt01: " + sdf1.format(dt01));
 		System.out.println("dt02: " + sdf1.format(dt02));
@@ -61,6 +63,7 @@ public class DateTimeStudy {
 		System.out.println("dt04: " + sdf1.format(dt04));
 		System.out.println("dt05: " + sdf1.format(dt05));
 		System.out.println("dt06: " + sdf1.format(dt06));
+		System.out.println("dt07: " + sdf1.format(dt07));
 		System.out.println("---");
 		System.out.println("dt01: " + sdf2.format(dt01));
 		System.out.println("dt02: " + sdf2.format(dt02));
@@ -68,6 +71,7 @@ public class DateTimeStudy {
 		System.out.println("dt04: " + sdf2.format(dt04));
 		System.out.println("dt05: " + sdf2.format(dt05));
 		System.out.println("dt06: " + sdf2.format(dt06));
+		System.out.println("dt07: " + sdf2.format(dt07));
 		System.out.println("---");
 		System.out.println("dt01: " + sdf3.format(dt01));
 		System.out.println("dt02: " + sdf3.format(dt02));
@@ -75,6 +79,7 @@ public class DateTimeStudy {
 		System.out.println("dt04: " + sdf3.format(dt04));
 		System.out.println("dt05: " + sdf3.format(dt05));
 		System.out.println("dt06: " + sdf3.format(dt06));
+		System.out.println("dt07: " + sdf3.format(dt07));
 		System.out.println();
 	}
 	
