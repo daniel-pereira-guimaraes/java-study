@@ -1,5 +1,7 @@
 package java_study;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.Instant;
@@ -13,12 +15,15 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.Temporal;
+import java.util.Date;
 import java.util.Locale;
 import java.util.Set;
+import java.util.TimeZone;
 
 public class DateTimeStudy {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException {
+		makeAndFormatDate();
 		makeLocalDateTime();
 		formatDateTime();
 		dateTimeOperations();
@@ -26,6 +31,51 @@ public class DateTimeStudy {
 		minusPlusDateTime();
 		instantOperations();
 		showZoneIds();
+	}
+	
+	private static void makeAndFormatDate() throws ParseException {
+		
+		SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		SimpleDateFormat sdf3 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		sdf3.setTimeZone(TimeZone.getTimeZone("UTC"));
+		
+		Date dt01 = new Date();
+		Date dt02 = new Date(System.currentTimeMillis());
+		Date dt03 = new Date(10L * 60L * 60L * 1000L); // 1970-01-01T10:00:00Z
+		Date dt04 = sdf1.parse("08/11/2022");
+		Date dt05 = sdf2.parse("08/11/2022 20:07:15");
+		Date dt06 = sdf3.parse("08/11/2022 20:07:15");
+		
+		System.out.println("--- makeAndFormatDate ---");
+		System.out.println("dt01: " + dt01);
+		System.out.println("dt02: " + dt02);
+		System.out.println("dt03: " + dt03);
+		System.out.println("dt04: " + dt04);
+		System.out.println("dt05: " + dt05);
+		System.out.println("dt06: " + dt06);
+		System.out.println("---");
+		System.out.println("dt01: " + sdf1.format(dt01));
+		System.out.println("dt02: " + sdf1.format(dt02));
+		System.out.println("dt03: " + sdf1.format(dt03));
+		System.out.println("dt04: " + sdf1.format(dt04));
+		System.out.println("dt05: " + sdf1.format(dt05));
+		System.out.println("dt06: " + sdf1.format(dt06));
+		System.out.println("---");
+		System.out.println("dt01: " + sdf2.format(dt01));
+		System.out.println("dt02: " + sdf2.format(dt02));
+		System.out.println("dt03: " + sdf2.format(dt03));
+		System.out.println("dt04: " + sdf2.format(dt04));
+		System.out.println("dt05: " + sdf2.format(dt05));
+		System.out.println("dt06: " + sdf2.format(dt06));
+		System.out.println("---");
+		System.out.println("dt01: " + sdf3.format(dt01));
+		System.out.println("dt02: " + sdf3.format(dt02));
+		System.out.println("dt03: " + sdf3.format(dt03));
+		System.out.println("dt04: " + sdf3.format(dt04));
+		System.out.println("dt05: " + sdf3.format(dt05));
+		System.out.println("dt06: " + sdf3.format(dt06));
+		System.out.println();
 	}
 	
 	private static void makeLocalDateTime() {
