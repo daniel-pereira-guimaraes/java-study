@@ -11,13 +11,13 @@ public class FileStudy {
 	private static final String TEXT_FILE_PATH = "C:\\temp\\text.txt"; 
 
 	public static void main(String[] args) throws IOException {
-		readTextFileWithScanner();
+		readTextFileWithScanner1();
 		readTextFileWithBufferedReader1();
 		readTextFileWithBufferedReader2();
 	}
 	
-	private static void readTextFileWithScanner() throws IOException {
-		System.out.println("--- readTextFileWithScanner ---");
+	private static void readTextFileWithScanner1() throws IOException {
+		System.out.println("--- readTextFileWithScanner1 ---");
 		File file = new File(TEXT_FILE_PATH);
 		Scanner scanner = null;
 		try {
