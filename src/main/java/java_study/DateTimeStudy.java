@@ -20,6 +20,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Set;
 import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
 
 public class DateTimeStudy {
 
@@ -30,6 +31,7 @@ public class DateTimeStudy {
 		formatDateTime();
 		dateTimeOperations();
 		durationsWithLocalDateTime();
+		durationsWithDate();
 		minusPlusDateTime();
 		instantOperations();
 		showZoneIds();
@@ -235,7 +237,7 @@ public class DateTimeStudy {
 		LocalDateTime endDateTime = LocalDateTime.now();
 		Duration duration = Duration.between(startDateTime, endDateTime);
 
-		System.out.println("--- durations ---\n");
+		System.out.println("--- durationsWithLocalDateTime ---\n");
 		System.out.println("Years: " + ChronoUnit.YEARS.between(startDateTime, endDateTime));
 		System.out.println("Months: " + ChronoUnit.MONTHS.between(startDateTime, endDateTime));
 		System.out.println("Weeks: " + ChronoUnit.WEEKS.between(startDateTime, endDateTime));
@@ -250,6 +252,21 @@ public class DateTimeStudy {
 		System.out.println("durarion - minutes: " + duration.toMinutes());
 		System.out.println("durarion - seconds: " + duration.toSeconds());
 		
+		System.out.println();
+	}
+	
+	private static void durationsWithDate() {
+		Date startDate = new Date();
+		Date endDate = new Date(startDate.getTime() + 5 * 24 * 60 * 60 * 1000);
+		long milliseconds = endDate.getTime() - startDate.getTime();
+
+		System.out.println("--- durationsWithDate ---");
+		System.out.println("Start date: " + startDate);
+		System.out.println("End date: " + endDate);
+		System.out.println("Days: " + TimeUnit.DAYS.convert(milliseconds, TimeUnit.MILLISECONDS));
+		System.out.println("Hours: " + TimeUnit.HOURS.convert(milliseconds, TimeUnit.MILLISECONDS));
+		System.out.println("Minutes: " + TimeUnit.MINUTES.convert(milliseconds, TimeUnit.MILLISECONDS));
+		System.out.println("Seconds: " + TimeUnit.SECONDS.convert(milliseconds, TimeUnit.MILLISECONDS));
 		System.out.println();
 	}
 	
