@@ -1,6 +1,8 @@
 package java_study;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -10,9 +12,11 @@ public class FileStudy {
 
 	public static void main(String[] args) throws IOException {
 		readTextFileWithScanner();
+		readTextFileWithBufferedReader();
 	}
 	
 	private static void readTextFileWithScanner() throws IOException {
+		System.out.println("--- readTextFileWithScanner ---");
 		File file = new File(TEXT_FILE_PATH);
 		Scanner scanner = null;
 		try {
@@ -24,6 +28,29 @@ public class FileStudy {
 			if (scanner != null)
 				scanner.close();
 		}
+		System.out.println();
+	}
+	
+	private static void readTextFileWithBufferedReader() throws IOException {
+		System.out.println("--- readTextFileWithBufferedReader ---");
+		FileReader fileReader = null;
+		BufferedReader bufferedReader = null;
+		try {
+			fileReader = new FileReader(TEXT_FILE_PATH);
+			bufferedReader = new BufferedReader(fileReader);
+			String line = bufferedReader.readLine();
+			while (line != null) {
+				System.out.println(line);
+				line = bufferedReader.readLine();
+			}
+		} 
+		finally {
+			if (bufferedReader != null)
+				bufferedReader.close();
+			if (fileReader != null)
+				fileReader.close();
+		}
+		System.out.println();
 	}
 
 }
