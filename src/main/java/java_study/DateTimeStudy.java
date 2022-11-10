@@ -29,7 +29,7 @@ public class DateTimeStudy {
 		makeLocalDateTime();
 		formatDateTime();
 		dateTimeOperations();
-		durations();
+		durationsWithLocalDateTime();
 		minusPlusDateTime();
 		instantOperations();
 		showZoneIds();
@@ -230,7 +230,7 @@ public class DateTimeStudy {
 		System.out.println();
 	}
 	
-	private static void durations() {
+	private static void durationsWithLocalDateTime() {
 		LocalDateTime startDateTime = LocalDateTime.now().minusYears(5);
 		LocalDateTime endDateTime = LocalDateTime.now();
 		Duration duration = Duration.between(startDateTime, endDateTime);
