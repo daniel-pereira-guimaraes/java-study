@@ -12,7 +12,7 @@ public class FileStudy {
 
 	public static void main(String[] args) throws IOException {
 		readTextFileWithScanner();
-		readTextFileWithBufferedReader();
+		readTextFileWithBufferedReader1();
 	}
 	
 	private static void readTextFileWithScanner() throws IOException {
@@ -31,8 +31,8 @@ public class FileStudy {
 		System.out.println();
 	}
 	
-	private static void readTextFileWithBufferedReader() throws IOException {
-		System.out.println("--- readTextFileWithBufferedReader ---");
+	private static void readTextFileWithBufferedReader1() throws IOException {
+		System.out.println("--- readTextFileWithBufferedReader1 ---");
 		FileReader fileReader = null;
 		BufferedReader bufferedReader = null;
 		try {
