@@ -13,6 +13,7 @@ public class FileStudy {
 	public static void main(String[] args) throws IOException {
 		readTextFileWithScanner();
 		readTextFileWithBufferedReader1();
+		readTextFileWithBufferedReader2();
 	}
 	
 	private static void readTextFileWithScanner() throws IOException {
@@ -50,6 +51,18 @@ public class FileStudy {
 			if (fileReader != null)
 				fileReader.close();
 		}
+		System.out.println();
+	}
+	
+	private static void readTextFileWithBufferedReader2() throws IOException {
+		System.out.println("--- readTextFileWithBufferedReader2 ---");
+		try (BufferedReader br = new BufferedReader(new FileReader(TEXT_FILE_PATH))) {
+			String line = br.readLine();
+			while (line != null) {
+				System.out.println(line);
+				line = br.readLine();
+			}
+		} 
 		System.out.println();
 	}
 
