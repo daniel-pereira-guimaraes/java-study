@@ -23,6 +23,7 @@ public class FileStudy {
 		writeTextFileWithBufferedWriter(false);
 		writeTextFileWithBufferedWriter(true);
 		listDirectories();
+		listFiles();
 	}
 	
 	private static void readTextFileWithScanner1() throws IOException {
@@ -120,6 +121,20 @@ public class FileStudy {
 			System.out.println("[" + path.getAbsolutePath() + "] contain " + dirList.length + " directories.");
 			for (File dir : dirList)
 				System.out.println("\t" + dir.getName());
+		} else {
+			System.out.println("Path not found: " + path.getAbsolutePath());
+		}
+		System.out.println();
+	}
+	
+	private static void listFiles() {
+		MiscStudy.printMethodName();
+		File path = new File(TEST_DIR_PATH);
+		if (path.exists()) {
+			File[] files = path.listFiles(File::isFile);
+			System.out.println("[" + path.getAbsolutePath() + "] contain " + files.length + " files.");
+			for (File file : files)
+				System.out.println("\t" + file.getAbsolutePath());
 		} else {
 			System.out.println("Path not found: " + path.getAbsolutePath());
 		}
