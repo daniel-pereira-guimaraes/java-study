@@ -3,6 +3,7 @@ package java_study;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -15,6 +16,8 @@ public class FileStudy {
 		readTextFileWithScanner2();
 		readTextFileWithBufferedReader1();
 		readTextFileWithBufferedReader2();
+		writeTextFileWithFileWriter(false);
+		writeTextFileWithFileWriter(true);
 	}
 	
 	private static void readTextFileWithScanner1() throws IOException {
@@ -75,5 +78,18 @@ public class FileStudy {
 		} 
 		System.out.println();
 	}
-
+	
+	private static void writeTextFileWithFileWriter(final boolean append) throws IOException {
+		System.out.println("--- writeTextFileWithFileWriter ---");
+		System.out.println((append ? "Appending to file " : "Creating new file ") + TEXT_FILE_PATH);
+		try (FileWriter fw = new FileWriter(TEXT_FILE_PATH, append)) {
+			fw.write((append ? "Appended" : "Created") + " by writeTextFileWithFileWriter\n");
+			for (int i = 1; i <= 10; i++) {
+				System.out.println("Writing line #" + i);
+				fw.write("Line #" + i + "\n");
+			}
+		}
+		System.out.println();
+	}
+	
 }
