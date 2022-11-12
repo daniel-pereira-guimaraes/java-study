@@ -38,6 +38,7 @@ public class DateTimeStudy {
 	}
 	
 	private static void makeAndFormatDate() throws ParseException {
+		MiscStudy.printMethodName();
 		
 		SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
 		SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -53,7 +54,6 @@ public class DateTimeStudy {
 		Date dt07 = sdf3.parse("08/11/2022 20:07:15");
 		Date dt08 = Date.from(Instant.parse("2022-11-08T20:07:15Z"));
 		
-		System.out.println("--- makeAndFormatDate ---");
 		System.out.println("dt01: " + dt01);
 		System.out.println("dt02: " + dt02);
 		System.out.println("dt03: " + dt03);
@@ -93,6 +93,7 @@ public class DateTimeStudy {
 	}
 	
 	private static void calendarOperations() {
+		MiscStudy.printMethodName();
 		
 		Date dt01 = Date.from(Instant.parse("2022-11-08T20:27:05-04:00"));
 		Date dt02 = calendarAdd(dt01, Calendar.HOUR, 5);
@@ -105,7 +106,6 @@ public class DateTimeStudy {
 		int month = calendar.get(Calendar.MONTH) + 1;
 		int year = calendar.get(Calendar.YEAR);
 		
-		System.out.println("--- calendarOperations ---");
 		System.out.println();
 		System.out.println("dt01: " + dt01);
 		System.out.println("dt02: " + dt02);
@@ -125,6 +125,7 @@ public class DateTimeStudy {
 	}
 	
 	private static void makeLocalDateTime() {
+		MiscStudy.printMethodName();
 		
 		final DateTimeFormatter fmt01 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		final DateTimeFormatter fmt02 = DateTimeFormatter.ofPattern("HH:mm");
@@ -144,7 +145,6 @@ public class DateTimeStudy {
 		final LocalDateTime v10 = LocalDateTime.of(v02,  v06);
 		final LocalDateTime v11 = LocalDateTime.parse("04/11/2022 20:29", fmt03);
 
-		System.out.println("--- makeDateTime ---\n");
 		System.out.println("v01: " + v01);
 		System.out.println("v02: " + v02);
 		System.out.println("v03: " + v03);
@@ -160,6 +160,7 @@ public class DateTimeStudy {
 	}
 	
 	private static void formatDateTime() {
+		MiscStudy.printMethodName();
 
 		final ZoneId saoPaulo = ZoneId.of("America/Sao_Paulo");
 		final ZoneId portugal = ZoneId.of("Portugal");
@@ -191,7 +192,6 @@ public class DateTimeStudy {
 		final LocalDateTime localDateTime = LocalDateTime.now();
 		final Instant instant = Instant.now();
 		
-		System.out.println("--- formatDateTime ---\n");
 		System.out.println("fmt01: " + localDateTime.format(fmt01));
 		System.out.println("fmt02: " + localDateTime.format(fmt02));
 		System.out.println("fmt03: " + localDateTime.format(fmt03));
@@ -219,7 +219,7 @@ public class DateTimeStudy {
 	}
 
 	private static void dateTimeOperations() {
-		System.out.println("--- dateTimeOperations ---\n");
+		MiscStudy.printMethodName();
 		System.out.println("LocalData.atTime: " + LocalDate.now().atTime(20,44));
 		System.out.println("startOfMonth: " + startOfMonth(LocalDate.now()));
 		System.out.println("endOfMonth: " + endOfMonth(LocalDate.now()));
@@ -233,11 +233,12 @@ public class DateTimeStudy {
 	}
 	
 	private static void durationsWithLocalDateTime() {
+		MiscStudy.printMethodName();
+
 		LocalDateTime startDateTime = LocalDateTime.now().minusYears(5);
 		LocalDateTime endDateTime = LocalDateTime.now();
 		Duration duration = Duration.between(startDateTime, endDateTime);
 
-		System.out.println("--- durationsWithLocalDateTime ---\n");
 		System.out.println("Years: " + ChronoUnit.YEARS.between(startDateTime, endDateTime));
 		System.out.println("Months: " + ChronoUnit.MONTHS.between(startDateTime, endDateTime));
 		System.out.println("Weeks: " + ChronoUnit.WEEKS.between(startDateTime, endDateTime));
@@ -256,11 +257,12 @@ public class DateTimeStudy {
 	}
 	
 	private static void durationsWithDate() {
+		MiscStudy.printMethodName();
+
 		Date startDate = new Date();
 		Date endDate = new Date(startDate.getTime() + 5 * 24 * 60 * 60 * 1000);
 		long milliseconds = endDate.getTime() - startDate.getTime();
 
-		System.out.println("--- durationsWithDate ---");
 		System.out.println("Start date: " + startDate);
 		System.out.println("End date: " + endDate);
 		System.out.println("Days: " + TimeUnit.DAYS.convert(milliseconds, TimeUnit.MILLISECONDS));
@@ -271,6 +273,7 @@ public class DateTimeStudy {
 	}
 	
 	private static void minusPlusDateTime() {
+		MiscStudy.printMethodName();
 		
 		LocalDateTime dt00 = LocalDateTime.now();
 		
@@ -290,9 +293,6 @@ public class DateTimeStudy {
 		LocalDateTime dt16 = dt00.plusMonths(5);
 		LocalDateTime dt17 = dt00.plusYears(5);
 	
-		System.out.println("--- minusPlusDateTime ---");
-		System.out.println();
-		
 		System.out.println("dt00: " + dt00);
 		System.out.println();
 
@@ -316,6 +316,7 @@ public class DateTimeStudy {
 	}
 	
 	private static void instantOperations() {
+		MiscStudy.printMethodName();
 		
 		Instant dt00 = Instant.now();
 		ZonedDateTime dt01 = dt00.atZone(ZoneId.of("America/Sao_Paulo"));
@@ -327,7 +328,6 @@ public class DateTimeStudy {
 		Instant dt07 = dt00.minus(7, ChronoUnit.DAYS);
 		Instant dt08 = dt00.plus(7, ChronoUnit.DAYS);
 
-		System.out.println("--- instantOperations ---");
 		System.out.println();
 		System.out.println("dt00: " + dt00);
 		System.out.println("dt01: " + dt01);
@@ -342,11 +342,11 @@ public class DateTimeStudy {
 	}
 	
 	private static void showZoneIds() {
+		MiscStudy.printMethodName();
+
 		String defaultZone = ZoneId.systemDefault().toString();
 		Set<String> zones = ZoneId.getAvailableZoneIds();
 
-		System.out.println("--- showZoneIds ---");
-		System.out.println();
 		System.out.println("defaultZone: " + defaultZone);
 		System.out.println();
 		

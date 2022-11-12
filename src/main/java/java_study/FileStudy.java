@@ -21,7 +21,7 @@ public class FileStudy {
 	}
 	
 	private static void readTextFileWithScanner1() throws IOException {
-		System.out.println("--- readTextFileWithScanner1 ---");
+		MiscStudy.printMethodName();
 		File file = new File(TEXT_FILE_PATH);
 		Scanner scanner = null;
 		try {
@@ -37,7 +37,7 @@ public class FileStudy {
 	}
 	
 	private static void readTextFileWithScanner2() throws IOException {
-		System.out.println("--- readTextFileWithScanner2 ---");
+		MiscStudy.printMethodName();
 		try (Scanner scanner = new Scanner(new File(TEXT_FILE_PATH))) {
 			while (scanner.hasNextLine())
 				System.out.println(scanner.nextLine());
@@ -46,7 +46,7 @@ public class FileStudy {
 	}
 
 	private static void readTextFileWithBufferedReader1() throws IOException {
-		System.out.println("--- readTextFileWithBufferedReader1 ---");
+		MiscStudy.printMethodName();
 		FileReader fileReader = null;
 		BufferedReader bufferedReader = null;
 		try {
@@ -68,7 +68,7 @@ public class FileStudy {
 	}
 	
 	private static void readTextFileWithBufferedReader2() throws IOException {
-		System.out.println("--- readTextFileWithBufferedReader2 ---");
+		MiscStudy.printMethodName();
 		try (BufferedReader br = new BufferedReader(new FileReader(TEXT_FILE_PATH))) {
 			String line = br.readLine();
 			while (line != null) {
@@ -80,7 +80,7 @@ public class FileStudy {
 	}
 	
 	private static void writeTextFileWithFileWriter(final boolean append) throws IOException {
-		System.out.println("--- writeTextFileWithFileWriter ---");
+		MiscStudy.printMethodName();
 		System.out.println((append ? "Appending to file " : "Creating new file ") + TEXT_FILE_PATH);
 		try (FileWriter fw = new FileWriter(TEXT_FILE_PATH, append)) {
 			fw.write((append ? "Appended" : "Created") + " by writeTextFileWithFileWriter\n");
