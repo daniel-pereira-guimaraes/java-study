@@ -24,6 +24,7 @@ public class FileStudy {
 		writeTextFileWithBufferedWriter(true);
 		listDirectories();
 		listFiles();
+		listRecursiveDirectories(TEST_DIR_PATH, 0);
 	}
 	
 	private static void readTextFileWithScanner1() throws IOException {
@@ -139,6 +140,23 @@ public class FileStudy {
 			System.out.println("Path not found: " + path.getAbsolutePath());
 		}
 		System.out.println();
+	}
+	
+	private static void listRecursiveDirectories(final String path, int level) {
+		level = level < 0 ? 0 : level;
+		if (level == 0)
+			MiscStudy.printMethodName();
+		File dir = new File(path);
+		if (dir.exists()) {
+			System.out.println(dir.getAbsolutePath());
+			File[] subDirList = dir.listFiles(File::isDirectory);
+			for (File subDir : subDirList) {
+				System.out.println(subDir.getAbsolutePath());
+				listRecursiveDirectories(subDir.getAbsolutePath(), level + 1);
+			}
+		}
+		if (level == 0)
+			System.out.println();
 	}
 
 }
