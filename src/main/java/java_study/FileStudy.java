@@ -10,7 +10,8 @@ import java.util.Scanner;
 
 public class FileStudy {
 	
-	private static final String TEXT_FILE_PATH = "C:\\temp\\text.txt"; 
+	private static final String TEXT_FILE_PATH = "C:\\temp\\text.txt";
+	private static final String TEST_DIR_PATH = "C:\\temp";
 
 	public static void main(String[] args) throws IOException {
 		readTextFileWithScanner1();
@@ -21,6 +22,7 @@ public class FileStudy {
 		writeTextFileWithFileWriter(true);
 		writeTextFileWithBufferedWriter(false);
 		writeTextFileWithBufferedWriter(true);
+		listDirectories();
 	}
 	
 	private static void readTextFileWithScanner1() throws IOException {
@@ -107,6 +109,21 @@ public class FileStudy {
 				bw.newLine();
 			}
 		}
+		System.out.println();
+	}
+	
+	private static void listDirectories() {
+		MiscStudy.printMethodName();
+		File path = new File(TEST_DIR_PATH);
+		if (path.exists()) {
+			File[] dirList = path.listFiles(File::isDirectory);
+			System.out.println("[" + path.getAbsolutePath() + "] contain " + dirList.length + " directories.");
+			for (File dir : dirList)
+				System.out.println("\t" + dir.getName());
+		} else {
+			System.out.println("Path not found: " + path.getAbsolutePath());
+		}
+		System.out.println();
 	}
 
 }
