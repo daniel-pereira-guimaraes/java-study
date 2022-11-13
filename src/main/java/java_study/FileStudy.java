@@ -11,9 +11,12 @@ import java.util.Scanner;
 import org.apache.commons.io.FileUtils;
 
 public class FileStudy {
-	
-	private static final String TEXT_FILE_PATH = "C:\\temp\\text.txt";
+
+	private static final String TEST_DRIVE_PATH = "C:\\";
 	private static final String TEST_DIR_PATH = "C:\\temp";
+	private static final String TEXT_FILE_PATH = "C:\\temp\\text.txt";
+	private static final String YES = "Yes";
+	private static final String NO = "No";
 
 	public static void main(String[] args) throws IOException {
 		readTextFileWithScanner1();
@@ -30,6 +33,9 @@ public class FileStudy {
 		createDirectory();
 		removeDirectory1();
 		removeDirectory2();
+		printPathInfo(new File(TEST_DRIVE_PATH));
+		printPathInfo(new File(TEST_DIR_PATH));
+		printPathInfo(new File(TEXT_FILE_PATH));
 	}
 	
 	private static void readTextFileWithScanner1() throws IOException {
@@ -213,6 +219,33 @@ public class FileStudy {
 		catch(IOException e) {
 			System.out.println(e.getMessage());
 		}
+		System.out.println();
+	}
+	
+	/**
+	 * Print file or directory informations.
+	 * @param file
+	 * @throws IOException 
+	 */
+	private static void printPathInfo(File file) throws IOException {
+		MiscStudy.printMethodName();
+		System.out.println("Informations for " + file.getAbsolutePath());
+		System.out.println("Exists: " + (file.exists() ? YES : NO));
+		System.out.println("Can execute: " + (file.canExecute() ? YES : NO));
+		System.out.println("Can read: " + (file.canRead() ? YES : NO));
+		System.out.println("Can write: " + (file.canWrite() ? YES : NO));
+		System.out.println("Is absolute: " + (file.isAbsolute() ? YES : NO));
+		System.out.println("Is directory: " + (file.isDirectory() ? YES : NO));
+		System.out.println("Is file: " + (file.isFile() ? YES : NO));
+		System.out.println("Is hidden: " + (file.isHidden() ? YES : NO));
+		System.out.println("Name: " + file.getName());
+		System.out.println("Parent: " + file.getParent());
+		System.out.println("Path: " + file.getPath());
+		System.out.println("Absolute path: " + file.getAbsolutePath());
+		System.out.println("Canonical path: " + file.getCanonicalPath());
+		System.out.println("Total space: " + file.getTotalSpace());
+		System.out.println("Usable space: " + file.getUsableSpace());
+		System.out.println("Free space: " + file.getFreeSpace());
 		System.out.println();
 	}
 	
