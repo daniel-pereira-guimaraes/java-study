@@ -3,15 +3,20 @@
  */
 package java_study;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Map;
 import java.util.Properties;
 
 import javax.mail.Message;
+import javax.mail.Multipart;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 public class SmtpStudy {
 	
@@ -25,6 +30,7 @@ public class SmtpStudy {
 	public static void main(String[] args) {
 		sendSimpleEmail();
 		sendHtmlEmail();
+		sendHtmlEmailWithAttachment();
 	}
 	
 	private static Session setupMailServer() {
@@ -99,6 +105,36 @@ public class SmtpStudy {
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(toMail));
 			message.setSubject(MSG_SUBJECT);
 			message.setContent(HTML_BODY, "text/html");
+			
+			sendEmail(message);
+		} 
+		catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	private static void sendHtmlEmailWithAttachment() {
+		MiscStudy.printMethodName();
+		final Session session = setupMailServer();
+		try {
+			final String fromMail = System.getenv("FROM_MAIL"); // sender@mailserver.com
+			final String toMail = System.getenv("TO_MAIL"); // recipient@mailserver.com
+
+			final MimeBodyPart attachmentPart = new MimeBodyPart();
+			attachmentPart.attachFile(new File(FILE_PATH));
+			
+			final MimeBodyPart htmlPart = new MimeBodyPart();
+			htmlPart.setContent(HTML_BODY, "text/html");
+			
+			final Multipart multipart = new MimeMultipart();
+			multipart.addBodyPart(htmlPart);
+			multipart.addBodyPart(attachmentPart);
+		     
+			final MimeMessage message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(fromMail));
+			message.addRecipient(Message.RecipientType.TO, new InternetAddress(toMail));
+			message.setSubject(MSG_SUBJECT);
+			message.setContent(multipart);
 			
 			sendEmail(message);
 		} 
