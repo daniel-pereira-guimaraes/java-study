@@ -8,6 +8,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
+import org.apache.commons.io.FileUtils;
+
 public class FileStudy {
 	
 	private static final String TEXT_FILE_PATH = "C:\\temp\\text.txt";
@@ -26,7 +28,8 @@ public class FileStudy {
 		listFiles();
 		listRecursiveDirectories(TEST_DIR_PATH, 0);
 		createDirectory();
-		removeDirectory();
+		removeDirectory1();
+		removeDirectory2();
 	}
 	
 	private static void readTextFileWithScanner1() throws IOException {
@@ -176,7 +179,10 @@ public class FileStudy {
 		System.out.println();
 	}
 	
-	private static void removeDirectory() {
+	/**
+	 * Remove directory, if empty.
+	 */
+	private static void removeDirectory1() {
 		MiscStudy.printMethodName();
 		File dir = new File(TEST_DIR_PATH + "\\subdir");
 		if (dir.exists()) {
@@ -191,4 +197,23 @@ public class FileStudy {
 		System.out.println();
 	}
 
+	/**
+	 * Remove directory, even if it is not empty.
+	 * @throws IOException
+	 */
+	private static void removeDirectory2() throws IOException {
+		MiscStudy.printMethodName();
+		File dir = new File(TEST_DIR_PATH + "\\subdir");
+		System.out.println("Removing directory: " + dir.getAbsolutePath());
+		try {
+			if (!dir.exists())
+				throw new IOException("Directory not exists: " + dir.getAbsolutePath());
+			FileUtils.deleteDirectory(dir); // Dependency: commons-io
+		} 
+		catch(IOException e) {
+			System.out.println(e.getMessage());
+		}
+		System.out.println();
+	}
+	
 }
