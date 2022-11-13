@@ -25,6 +25,7 @@ public class FileStudy {
 		listDirectories();
 		listFiles();
 		listRecursiveDirectories(TEST_DIR_PATH, 0);
+		createDirectory();
 	}
 	
 	private static void readTextFileWithScanner1() throws IOException {
@@ -157,6 +158,21 @@ public class FileStudy {
 		}
 		if (level == 0)
 			System.out.println();
+	}
+	
+	private static void createDirectory() {
+		MiscStudy.printMethodName();
+		File dir = new File(TEST_DIR_PATH + "\\subdir");
+		if (dir.exists())
+			System.out.println("Directory already exists: " + dir.getAbsolutePath());
+		else {
+			System.out.println("Creating directory: " + dir.getAbsolutePath());
+			if (dir.mkdir())
+				System.out.println("Directory created successfully.");
+			else
+				System.out.println("Could not create directory.");
+		}
+		System.out.println();
 	}
 
 }
