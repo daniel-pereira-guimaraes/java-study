@@ -26,6 +26,7 @@ public class FileStudy {
 		listFiles();
 		listRecursiveDirectories(TEST_DIR_PATH, 0);
 		createDirectory();
+		removeDirectory();
 	}
 	
 	private static void readTextFileWithScanner1() throws IOException {
@@ -171,6 +172,21 @@ public class FileStudy {
 				System.out.println("Directory created successfully.");
 			else
 				System.out.println("Could not create directory.");
+		}
+		System.out.println();
+	}
+	
+	private static void removeDirectory() {
+		MiscStudy.printMethodName();
+		File dir = new File(TEST_DIR_PATH + "\\subdir");
+		if (dir.exists()) {
+			System.out.println("Removing directory: " + dir.getAbsolutePath());
+			if (dir.delete())
+				System.out.println("Directory successfully removed.");
+			else
+				System.out.println("Could not remove directory.");
+		} else {
+			System.out.println("Directory not exists: " + dir.getAbsolutePath());
 		}
 		System.out.println();
 	}
