@@ -16,13 +16,15 @@ import javax.mail.internet.MimeMessage;
 public class SmtpStudy {
 	
 	static final String MSG_SUBJECT = "Message subject";
-	static final String MSG_BODY = "Body message example.";
+	static final String TEXT_BODY = "Body message example.";
+	static final String HTML_BODY = "<h1>Test message</h1><p>This is an example of an <b>HTML</b> message.</p>";
 	static final String SENDING_MAIL = "Sending mail...";
 	static final String SENT_SUCCESS = "Sent with success!";
 	static final String FILE_PATH = "C:\\temp\\text.txt";
 	
 	public static void main(String[] args) {
 		sendSimpleEmail();
+		sendHtmlEmail();
 	}
 	
 	private static Session setupMailServer() {
@@ -76,7 +78,27 @@ public class SmtpStudy {
 			message.setFrom(new InternetAddress(fromMail));
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(toMail));
 			message.setSubject(MSG_SUBJECT);
-			message.setText(MSG_BODY);
+			message.setText(TEXT_BODY);
+			
+			sendEmail(message);
+		} 
+		catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	private static void sendHtmlEmail() {
+		MiscStudy.printMethodName();
+		final Session session = setupMailServer();
+		try {
+			final String fromMail = System.getenv("FROM_MAIL"); // sender@mailserver.com
+			final String toMail = System.getenv("TO_MAIL"); // recipient@mailserver.com
+
+			final MimeMessage message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(fromMail));
+			message.addRecipient(Message.RecipientType.TO, new InternetAddress(toMail));
+			message.setSubject(MSG_SUBJECT);
+			message.setContent(HTML_BODY, "text/html");
 			
 			sendEmail(message);
 		} 
