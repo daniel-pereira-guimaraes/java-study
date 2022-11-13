@@ -19,6 +19,7 @@ public class SmtpStudy {
 	static final String MSG_BODY = "Body message example.";
 	static final String SENDING_MAIL = "Sending mail...";
 	static final String SENT_SUCCESS = "Sent with success!";
+	static final String FILE_PATH = "C:\\temp\\text.txt";
 	
 	public static void main(String[] args) {
 		sendSimpleEmail();
@@ -48,32 +49,36 @@ public class SmtpStudy {
 				return new PasswordAuthentication(user, password);
 			}
 		});		
-		
+		session.setDebug(true);
+
 		return session; 
+	}
+
+	private static void sendEmail(final Message message) {
+		System.out.println(SENDING_MAIL);
+		try {
+			Transport.send(message);
+			System.out.println(SENT_SUCCESS);
+		} 
+		catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	private static void sendSimpleEmail() {
 		MiscStudy.printMethodName();
-		
-		// Prepara session.
 		final Session session = setupMailServer();
-		session.setDebug(true);
 		try {
-			// Get data from environment.
 			final String fromMail = System.getenv("FROM_MAIL"); // sender@mailserver.com
 			final String toMail = System.getenv("TO_MAIL"); // recipient@mailserver.com
 
-			// Prepare message.
 			final MimeMessage message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(fromMail));
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(toMail));
 			message.setSubject(MSG_SUBJECT);
 			message.setText(MSG_BODY);
-	
-			// Send message.
-			System.out.println(SENDING_MAIL);
-			Transport.send(message);
-			System.out.println(SENT_SUCCESS);
+			
+			sendEmail(message);
 		} 
 		catch(Exception e) {
 			System.out.println(e.getMessage());
