@@ -44,9 +44,11 @@ public class GenericStudy {
 
 	public static void main(String[] args) {
 		testListServiceWithString();
+		testListServiceWithInteger();
 	}
 	
 	private static void testListServiceWithString() {
+		MiscStudy.printMethodName();
 		ListService<String> listService = new ListService<String>();
 		listService.add("One");
 		listService.add("Two");
@@ -54,6 +56,18 @@ public class GenericStudy {
 		listService.print("List");
 		System.out.println("First: " + listService.getFirst());
 		System.out.println("Last: " + listService.getLast());
+		System.out.println();
 	}
 
+	private static void testListServiceWithInteger() {
+		MiscStudy.printMethodName();
+		ListService<Integer> listService = new ListService<Integer>();
+		for (int i = 1; i <= 10; i++)
+			listService.add(i);
+		listService.print("List");
+		System.out.println("First: " + listService.getFirst());
+		System.out.println("Last: " + listService.getLast());
+		System.out.println();
+	}
+	
 }
