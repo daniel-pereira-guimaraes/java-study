@@ -90,6 +90,8 @@ public class GenericStudy2 {
 	public static void main(String[] args) {
 		
 		List<Integer> integers = new ArrayList<Integer>(Arrays.asList(3,9,15,0,4,-9));
+		
+		List<String> names = new ArrayList<String>(Arrays.asList("Tom", "Timon", "Sid", "Jerry"));
 
 		List<Product> products = new ArrayList<Product>();
 		products.add(new Product("SSD", 50.0));
@@ -106,11 +108,13 @@ public class GenericStudy2 {
 		raceCars.add(new RaceCar("Mercedes", "F1", 390));
 		
 		Integer maxInteger = CalculatorService.max(integers);
+		String maxName = CalculatorService.max(names);
 		Product maxProduct = CalculatorService.max(products);
 		Car maxCar = CalculatorService.max(cars);
 		RaceCar maxRaceCar = CalculatorService.max(raceCars);
 		
 		System.out.println("Max integer: " + maxInteger);
+		System.out.println("Max name: " + maxName);
 		System.out.println("Max product: " + maxProduct);
 		System.out.println("Max car: " + maxCar);
 		System.out.println("Max race car: " + maxRaceCar);
