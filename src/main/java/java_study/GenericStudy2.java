@@ -15,6 +15,10 @@ public class GenericStudy2 {
 			this.velocity = velocity;
 		}
 		
+		public String getModel() {
+			return model;
+		}
+		
 		public int getVelocity() {
 			return velocity;
 		}
@@ -30,6 +34,22 @@ public class GenericStudy2 {
 		}
 	}
 	
+	private static class RaceCar extends Car {
+		
+		private String category;
+		
+		public RaceCar(String model, String category, int velocity) {
+			super(model, velocity);
+			this.category = category;
+		}
+		
+		@Override
+		public String toString() {
+			return "{model: " + getModel() + ", category: " + category + ", velocity: " + getVelocity() + "}";
+		}
+		
+	}
+
 	private static class Product implements Comparable<Product>{
 		private String name;
 		private Double price;
@@ -56,7 +76,7 @@ public class GenericStudy2 {
 	
 	private static class CalculatorService {
 		
-		public static <T extends Comparable<T>> T max(List<T> list) {
+		public static <T extends Comparable<? super T>> T max(List<T> list) {
 			T maxItem = list.get(0);
 			for (T item : list) {
 				if (item.compareTo(maxItem) > 0)
@@ -81,13 +101,19 @@ public class GenericStudy2 {
 		cars.add(new Car("Koenigsegg Agera RS", 447));
 		cars.add(new Car("Bugatti Veyron EB 16.4", 408));
 		
+		List<RaceCar> raceCars = new ArrayList<RaceCar>();
+		raceCars.add(new RaceCar("Ferrari", "F1", 400));
+		raceCars.add(new RaceCar("Mercedes", "F1", 390));
+		
 		Integer maxInteger = CalculatorService.max(integers);
 		Product maxProduct = CalculatorService.max(products);
 		Car maxCar = CalculatorService.max(cars);
+		RaceCar maxRaceCar = CalculatorService.max(raceCars);
 		
 		System.out.println("Max integer: " + maxInteger);
 		System.out.println("Max product: " + maxProduct);
 		System.out.println("Max car: " + maxCar);
+		System.out.println("Max race car: " + maxRaceCar);
 	}
 
 }
