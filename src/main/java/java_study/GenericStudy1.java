@@ -19,12 +19,25 @@ public class GenericStudy1 {
 		printList(superList1);
 		printList(superList2);
 		
+		printRawList(integerList);
+		printRawList(stringList);
+		printRawList(superList1);
+		printRawList(superList2);
+	
 		printNumberList(integerList);
 		printNumberList(doubleList);
 		printNumberList(superList3);
 	}
 	
 	private static void printList(List<?> list) {
+		MiscStudy.printMethodName();
+		for (Object item : list)
+			System.out.println(item);
+		System.out.println();
+	}
+	
+	@SuppressWarnings("rawtypes")
+	private static void printRawList(List list) {
 		MiscStudy.printMethodName();
 		for (Object item : list)
 			System.out.println(item);
