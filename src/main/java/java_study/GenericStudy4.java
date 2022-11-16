@@ -43,7 +43,7 @@ public class GenericStudy4 {
 	
 	private static void printArea1(List<Shape> list) {
 		MiscStudy.printMethodName();
-		//list.add(new Rectangle(4));
+		//list.add(new Rectangle(4, 3)); // Throw exception!
 		double total = 0;
 		for (Shape shape : list) {
 			System.out.println(shape.getClass().getSimpleName() + ": " + shape.getArea());
@@ -53,12 +53,27 @@ public class GenericStudy4 {
 		System.out.println();
 	}
 
+	private static void printArea2(List<? extends Shape> list) {
+		MiscStudy.printMethodName();
+		//list.add(new Rectangle(3, 4)); // Compiler error!
+		double total = 0;
+		for (Shape shape : list) {
+			System.out.println(shape.getClass().getSimpleName() + ": " + shape.getArea());
+			total += shape.getArea();
+		}
+		System.out.println("Total area: " + total);
+		System.out.println();
+	}
+	
 	public static void main(String[] args) {
-		List<Shape> rectangles = Arrays.asList(
-			new Circle(2), 
-			new Rectangle(2, 5),
-			new Circle(3));
-		printArea1(rectangles);
+		final Circle c1 = new Circle(2);
+		final Circle c2 = new Circle(3);
+		final Rectangle r1 = new Rectangle(2, 3);
+		
+		final List<Shape> shapes = Arrays.asList(c1, c2, r1);
+		
+		printArea1(shapes);
+		printArea2(shapes);
 	}
 
 }
