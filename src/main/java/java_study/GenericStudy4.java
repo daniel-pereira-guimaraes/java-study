@@ -64,6 +64,21 @@ public class GenericStudy4 {
 		System.out.println("Total area: " + total);
 		System.out.println();
 	}
+
+	private static void printArea3(List<?> list) {
+		MiscStudy.printMethodName();
+		//list.add(new Rectangle(3, 4)); // Compiler error!
+		double total = 0;
+		for (Object item : list) {
+			if (item instanceof Shape) {
+				Shape shape = (Shape) item;
+				System.out.println(shape.getClass().getSimpleName() + ": " + shape.getArea());
+				total += shape.getArea();
+			}
+		}
+		System.out.println("Total area: " + total);
+		System.out.println();
+	}
 	
 	public static void main(String[] args) {
 		final Circle c1 = new Circle(2);
@@ -74,6 +89,7 @@ public class GenericStudy4 {
 		
 		printArea1(shapes);
 		printArea2(shapes);
+		printArea3(shapes);
 	}
 
 }
