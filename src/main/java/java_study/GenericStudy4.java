@@ -3,7 +3,7 @@ package java_study;
 import java.util.Arrays;
 import java.util.List;
 
-public class GenericStudy4 {
+public class GenericStudy4<T> {
 	
 	private static interface Shape {
 		double getArea();
@@ -41,7 +41,24 @@ public class GenericStudy4 {
 		
 	}
 	
-	private static void printArea1(List<Shape> list) {
+	// printArea1 is bad solution!
+	private static void printArea1(List<?> list) {
+		MiscStudy.printMethodName();
+		//list.add(new Rectangle(3, 4)); // Compiler error!
+		double total = 0;
+		for (Object item : list) {
+			if (item instanceof Shape) {
+				Shape shape = (Shape) item;
+				System.out.println(shape.getClass().getSimpleName() + ": " + shape.getArea());
+				total += shape.getArea();
+			}
+		}
+		System.out.println("Total area: " + total);
+		System.out.println();
+	}
+
+	// printArea2 Not the best solution (accept only List<Shape>)! 
+	private static void printArea2(List<Shape> list) {
 		MiscStudy.printMethodName();
 		//list.add(new Rectangle(4, 3)); // Throw exception!
 		double total = 0;
@@ -53,28 +70,14 @@ public class GenericStudy4 {
 		System.out.println();
 	}
 
-	private static void printArea2(List<? extends Shape> list) {
+	// Best solution (accept List<Shape>, List<Circle>, List<Rectangle>)!
+	private static void printArea3(List<? extends Shape> list) {
 		MiscStudy.printMethodName();
 		//list.add(new Rectangle(3, 4)); // Compiler error!
 		double total = 0;
 		for (Shape shape : list) {
 			System.out.println(shape.getClass().getSimpleName() + ": " + shape.getArea());
 			total += shape.getArea();
-		}
-		System.out.println("Total area: " + total);
-		System.out.println();
-	}
-
-	private static void printArea3(List<?> list) {
-		MiscStudy.printMethodName();
-		//list.add(new Rectangle(3, 4)); // Compiler error!
-		double total = 0;
-		for (Object item : list) {
-			if (item instanceof Shape) {
-				Shape shape = (Shape) item;
-				System.out.println(shape.getClass().getSimpleName() + ": " + shape.getArea());
-				total += shape.getArea();
-			}
 		}
 		System.out.println("Total area: " + total);
 		System.out.println();
