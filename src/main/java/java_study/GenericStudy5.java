@@ -1,5 +1,6 @@
 package java_study;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,6 +13,7 @@ public class GenericStudy5 {
 		List<Number> numberList1 = Arrays.asList(1, 2.5, 3);
 		List<? extends Number> numberList2 = Arrays.asList(1, 2, 5);
 		List<? super Number> numberList3 = Arrays.asList(2, 54, 6.0);
+		List<? super Object> objectList = new ArrayList<Object>();
 		
 		// Cannot assign List<Integer) to List<Number>!
 		//numberList1 = integerList; 
@@ -40,6 +42,9 @@ public class GenericStudy5 {
 		//numberList3.add(30); // Throw exception!
 		//Number z = numberList3.get(0); // Cannot get!
 		Object o = numberList3.get(0);
+
+		copyNumberListToSuperList(integerList, objectList);
+		copyNumberListToSuperList(doubleList, objectList);
 		
 		System.out.print("integerList: ");
 		for (int i = 0; i < integerList.size(); i++)
@@ -50,16 +55,28 @@ public class GenericStudy5 {
 		for (int i = 0; i < doubleList.size(); i++)
 			System.out.print((i > 0 ? ", " : "") + doubleList.get(i));
 		System.out.println();
-
+		
 		System.out.print("numberList3: ");
 		for (int i = 0; i < numberList3.size(); i++)
 			System.out.print((i > 0 ? ", " : "") + numberList3.get(i));
+		System.out.println();
+
+		System.out.print("objectList: ");
+		for (int i = 0; i < objectList.size(); i++)
+			System.out.print((i > 0 ? ", " : "") + objectList.get(i));
 		System.out.println();
 		
 		
 		System.out.println("x = " + x);
 		System.out.println("y = " + y);
 		System.out.println("o = " + o);
+	}
+	
+	private static void copyNumberListToSuperList(
+			List<? extends Number> source,	List<? super Number> dest) {
+		
+		for (Number n : source)
+			dest.add(n);
 	}
 
 }
