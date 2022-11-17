@@ -39,6 +39,7 @@ public class GenericStudy5 {
 		
 		//numberList3.add(30); // Throw exception!
 		//Number z = numberList3.get(0); // Cannot get!
+		Object o = numberList3.get(0);
 		
 		System.out.print("integerList: ");
 		for (int i = 0; i < integerList.size(); i++)
@@ -58,6 +59,7 @@ public class GenericStudy5 {
 		
 		System.out.println("x = " + x);
 		System.out.println("y = " + y);
+		System.out.println("o = " + o);
 	}
 
 }
