@@ -1,14 +1,43 @@
 package java_study;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 public class SetStudy {
 
 	public static void main(String[] args) {
+		operationsWithSet();
 		stringHashSet();
 		stringLinkedHashSet();
+	}
+	
+	private static void operationsWithSet() {
+		MiscStudy.printMethodName();
+		
+		Set<Integer> set = Set.of(5, 9, 10, 3);
+		
+		// Print all elements.
+		System.out.print("Elements: ");
+		boolean first = true;
+		for (Integer i : set) { 
+			System.out.print((first ? "" : ", ") + i);
+			first = false;
+		}
+		System.out.println();
+		
+		System.out.println("Checking if it contains individual elements...");
+		for (int i = 1; i <= 10; i++)
+			System.out.println("\tset.contains(" + i + "): " + set.contains(i));
+		
+		System.out.println("Checking if it contains collections of elements...");
+		List<Integer> list = Arrays.asList(3, 5, 10);
+		Set<Integer> primes = Set.of(2, 3, 5);
+		System.out.println("\tset.containsAll(" + list + "): " + set.containsAll(list));
+		System.out.println("\tset.containsAll(" + primes + "): " + set.containsAll(primes));
+		System.out.println();
 	}
 	
 	private static void stringHashSet() {
@@ -23,9 +52,6 @@ public class SetStudy {
 		for (String s : set)
 			System.out.println(s);
 		
-		System.out.println();
-		System.out.println("contains B: " + set.contains("Jhon"));
-		System.out.println("contains D: " + set.contains("Jacob"));
 		System.out.println();
 	}
 
