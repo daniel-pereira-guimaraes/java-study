@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class SetStudy {
 
@@ -12,6 +13,7 @@ public class SetStudy {
 		operationsWithSet();
 		stringHashSet();
 		stringLinkedHashSet();
+		stringTreeSet();
 	}
 	
 	private static void operationsWithSet() {
@@ -19,7 +21,6 @@ public class SetStudy {
 		
 		Set<Integer> set = Set.of(5, 9, 10, 3);
 		
-		// Print all elements.
 		System.out.print("Elements: ");
 		boolean first = true;
 		for (Integer i : set) { 
@@ -59,6 +60,22 @@ public class SetStudy {
 		MiscStudy.printMethodName();
 		
 		Set<String> set = new LinkedHashSet<>(); // Addition order.
+		set.add("Emily");
+		set.add("Jhon");
+		set.add("Sophia");
+		set.add("Bob");
+		
+		for (String s : set)
+			System.out.println(s);
+		
+		System.out.println();
+	}
+
+	
+	private static void stringTreeSet() {
+		MiscStudy.printMethodName();
+		
+		Set<String> set = new TreeSet<>(); // Ordered by compareTo!
 		set.add("Emily");
 		set.add("Jhon");
 		set.add("Sophia");
