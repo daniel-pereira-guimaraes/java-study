@@ -14,6 +14,7 @@ public class SetStudy {
 		stringHashSet();
 		stringLinkedHashSet();
 		stringTreeSet();
+		speedTest();
 	}
 	
 	private static void operationsWithSet() {
@@ -83,6 +84,61 @@ public class SetStudy {
 		
 		for (String s : set)
 			System.out.println(s);
+		
+		System.out.println();
+	}
+	
+	@SuppressWarnings("unused")
+	private static int countForSpeedTest(Set<?> set) {
+		int count = 0;
+		for (Object o : set) 
+			count++;
+		return count;
+	}
+	
+	private static void speedTest(Set<?> set) {
+		@SuppressWarnings("unused")
+		int count = 0;
+		final long startTime = System.currentTimeMillis();
+		for (int i = 0; i < 20; i++)
+			count = countForSpeedTest(set);
+		final long endTime = System.currentTimeMillis();
+		final long time = endTime - startTime;
+		System.out.println("\t" + set.getClass().getSimpleName() + ": " + time + " ms");
+	}
+	
+	private static void speedTest() {
+		MiscStudy.printMethodName();
+		
+		final Set<Integer> hashSet = new HashSet<>();
+		final Set<Integer> linkedHashSet = new LinkedHashSet<>();
+		final Set<Integer> treeSet = new TreeSet<>();
+		final int count = 1000000;
+
+		System.out.println("ADD TIME:");
+
+		long time = System.currentTimeMillis();
+		for (Integer i = count; i > 0; i--)
+			hashSet.add(i);
+		time = System.currentTimeMillis() - time;
+		System.out.println("\tHashSet: " + time + " ms");
+		
+		time = System.currentTimeMillis();
+		for (Integer i = count; i > 0; i--)
+			linkedHashSet.add(i);
+		time = System.currentTimeMillis() - time;
+		System.out.println("\tLinkedHashSet: " + time + " ms");
+
+		time = System.currentTimeMillis();
+		for (Integer i = count; i > 0; i--)
+			treeSet.add(i);
+		time = System.currentTimeMillis() - time;
+		System.out.println("\tTreeSet: " + time + " ms");
+		
+		System.out.println("READ TIME:");
+		speedTest(hashSet);
+		speedTest(linkedHashSet);
+		speedTest(treeSet);
 		
 		System.out.println();
 	}
