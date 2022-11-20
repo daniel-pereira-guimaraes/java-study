@@ -17,6 +17,7 @@ public class SetStudy {
 		speedTest();
 		unionSet();
 		intersectionSet();
+		diffSet();
 	}
 	
 	private static void operationsWithSet() {
@@ -166,6 +167,18 @@ public class SetStudy {
 		System.out.println("a = " + a);
 		System.out.println("b = " + b);
 		System.out.println("a INTERSECTION b = " + c);
+		System.out.println();
+	}
+
+	private static void diffSet() {
+		MiscStudy.printMethodName();
+		final Set<Integer> a = new TreeSet<>(Arrays.asList(1, 3, 5, 6, 7, 8, 9, 0));
+		final Set<Integer> b = new TreeSet<>(Arrays.asList(0, 2, 4, 6, 8));
+		final Set<Integer> c = new TreeSet<>(a);
+		c.removeAll(b);
+		System.out.println("a = " + a);
+		System.out.println("b = " + b);
+		System.out.println("a - b = " + c);
 		System.out.println();
 	}
 	
