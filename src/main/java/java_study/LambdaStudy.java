@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Consumer;
 
 public class LambdaStudy {
 	
@@ -18,6 +19,7 @@ public class LambdaStudy {
 	public static void main(String[] args) {
 		sortByLength();
 		sortByDistinctLetterCount();
+		processList();
 	}
 	
 	private static void sortByLength() {
@@ -33,6 +35,19 @@ public class LambdaStudy {
 		List<String> names =  Arrays.asList("Joe", "Gilbert", "Amelia", "Lee", "Anna");
 		names.sort(LambdaStudy::compareLetterCount); 
 		names.forEach(System.out::println);
+		System.out.println();
+	}
+	
+	private static void processList() {
+		MiscStudy.printMethodName();
+		List<String> names =  Arrays.asList("Joe", "Gilbert", "Amelia", "Lee", "Anna");
+
+		Consumer<String> print = s -> System.out.println(s);
+		Consumer<String> upperPrint = s-> System.out.println(s.toUpperCase());
+
+		names.forEach(print);
+		System.out.println();
+		names.forEach(upperPrint);
 		System.out.println();
 	}
 
