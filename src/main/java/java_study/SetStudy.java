@@ -15,6 +15,7 @@ public class SetStudy {
 		stringLinkedHashSet();
 		stringTreeSet();
 		speedTest();
+		unionSet();
 	}
 	
 	private static void operationsWithSet() {
@@ -142,5 +143,18 @@ public class SetStudy {
 		
 		System.out.println();
 	}
+	
+	private static void unionSet() {
+		MiscStudy.printMethodName();
+		final Set<Integer> a = new TreeSet<>(Arrays.asList(1, 3, 5, 7, 9, 0));
+		final Set<Integer> b = new TreeSet<>(Arrays.asList(0, 2, 4, 6, 8));
+		final Set<Integer> c = new TreeSet<>(a);
+		c.addAll(b);
+		System.out.println("a = " + a);
+		System.out.println("b = " + b);
+		System.out.println("a UNION b = " + c);
+		System.out.println();
+	}
+
 	
 }
