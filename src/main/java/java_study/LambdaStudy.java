@@ -29,6 +29,7 @@ public class LambdaStudy {
 		convertList2();
 		filterList1();
 		filterList2();
+		testSumIf();
 	}
 	
 	private static void sortByLength() {
@@ -121,5 +122,35 @@ public class LambdaStudy {
 		availables.forEach(p -> System.out.println(p.getName()));
 		System.out.println();
 	}
+	
+	private static double sumIf(List<Product> list, Predicate<Product> filter) {
+		double sum = 0;
+		for (Product p : list) {
+			if (filter.test(p))
+				sum += p.getPrice();
+		}
+		return sum;
+	}
+	
+	private static void testSumIf() {
+		MiscStudy.printMethodName();
+		
+		List<Product> list = new ArrayList<>();
+		list.add(new Product("TV", 300.0));
+		list.add(new Product("Mouse", 10.0));
+		list.add(new Product("Keyboard", 15.0));
+		list.add(new Product("Monitor", 200.0));
+		list.add(new Product("HD", 300.0));
+		list.add(new Product("Tablet", 150.0));
+		
+		double sum1 = sumIf(list, p -> p.getName().charAt(0) == 'T');
+		double sum2 = sumIf(list, p -> p.getName().charAt(0) == 'M');
+		
+		System.out.println("Sum1: " + sum1);
+		System.out.println("Sum2: " + sum2);
+
+		System.out.println();
+	}
+	
 
 }
