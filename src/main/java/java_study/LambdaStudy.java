@@ -28,6 +28,7 @@ public class LambdaStudy {
 		convertList1();
 		convertList2();
 		filterList1();
+		filterList2();
 	}
 	
 	private static void sortByLength() {
@@ -103,6 +104,21 @@ public class LambdaStudy {
 		List<String> filteredList = list.stream().filter(p).toList();
 		
 		filteredList.forEach(System.out::println);
+		System.out.println();
+	}
+	
+	private static void filterList2() {
+		MiscStudy.printMethodName();
+		
+		List<Product> products = new ArrayList<>();
+		products.add(new Product("TV", 300.0));
+		products.add(new Product("Mouse", 10.0, 200));
+		products.add(new Product("Keyboard", 15.0, 500));
+		products.add(new Product("HD", 300.0));
+		
+		List<Product> availables = products.stream().filter(Product::isAvailable).toList();
+		
+		availables.forEach(p -> System.out.println(p.getName()));
 		System.out.println();
 	}
 
