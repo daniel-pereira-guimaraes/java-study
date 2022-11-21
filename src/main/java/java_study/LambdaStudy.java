@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class LambdaStudy {
@@ -26,6 +27,7 @@ public class LambdaStudy {
 		clearList();
 		convertList1();
 		convertList2();
+		filterList1();
 	}
 	
 	private static void sortByLength() {
@@ -89,6 +91,18 @@ public class LambdaStudy {
 		
 		List<String> names = products.stream().map(p -> p.getName().toUpperCase()).toList();
 		names.forEach(System.out::println);
+		System.out.println();
+	}
+	
+	private static void filterList1() {
+		MiscStudy.printMethodName();
+		
+		List<String> list = Arrays.asList("Joe", "Gilbert", "Amelia", "Lee", "Anna");
+		
+		Predicate<String> p = s -> s.toUpperCase().contains("E");
+		List<String> filteredList = list.stream().filter(p).toList();
+		
+		filteredList.forEach(System.out::println);
 		System.out.println();
 	}
 
