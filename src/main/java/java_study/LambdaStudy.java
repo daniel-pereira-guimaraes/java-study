@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class LambdaStudy {
 	
@@ -22,6 +24,7 @@ public class LambdaStudy {
 		sortByDistinctLetterCount();
 		processList();
 		clearList();
+		convertList1();
 	}
 	
 	private static void sortByLength() {
@@ -58,6 +61,21 @@ public class LambdaStudy {
 		List<Integer> numbers = new ArrayList<>(Arrays.asList(0, 1,2,3,4,5,6,7,8,9));
 		numbers.removeIf(n -> n % 2 == 0);
 		numbers.forEach(System.out::println);
+		System.out.println();
+	}
+	
+	private static void convertList1() {
+		MiscStudy.printMethodName();
+		
+		List<Product> products = new ArrayList<Product>();
+		products.add(new Product("TV", 300.0));
+		products.add(new Product("Mouse", 10.0));
+		products.add(new Product("Keyboard", 15.0));
+		
+		Function<Product, String> convert = p -> p.getName().toUpperCase(); 
+		List<String> names = products.stream().map(convert).collect(Collectors.toList());
+		names.forEach(System.out::println);
+		System.out.println();
 	}
 
 }
