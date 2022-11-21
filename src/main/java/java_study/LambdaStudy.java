@@ -25,6 +25,7 @@ public class LambdaStudy {
 		processList();
 		clearList();
 		convertList1();
+		convertList2();
 	}
 	
 	private static void sortByLength() {
@@ -74,6 +75,19 @@ public class LambdaStudy {
 		
 		Function<Product, String> convert = p -> p.getName().toUpperCase(); 
 		List<String> names = products.stream().map(convert).collect(Collectors.toList());
+		names.forEach(System.out::println);
+		System.out.println();
+	}
+	
+	private static void convertList2() {
+		MiscStudy.printMethodName();
+		
+		List<Product> products = new ArrayList<Product>();
+		products.add(new Product("TV", 300.0));
+		products.add(new Product("Mouse", 10.0));
+		products.add(new Product("Keyboard", 15.0));
+		
+		List<String> names = products.stream().map(p -> p.getName().toUpperCase()).toList();
 		names.forEach(System.out::println);
 		System.out.println();
 	}
