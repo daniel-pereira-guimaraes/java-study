@@ -10,6 +10,7 @@ public class StreamStudy {
 		upperStringList();
 		stringLengths();
 		sumIntegerList1();
+		sumIntegerList2();
 	}
 	
 	private static void filterIntegerList() {
@@ -50,6 +51,17 @@ public class StreamStudy {
 		
 		List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
 		int sum = list.stream().reduce(0, (t, i) -> t + i).intValue();
+		
+		System.out.println("list: " + list);
+		System.out.println("sum: " + sum);
+		System.out.println();
+	}
+
+	private static void sumIntegerList2() {
+		MiscStudy.printMethodName();
+		
+		List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
+		Integer sum = list.stream().reduce(Integer::sum).get();
 		
 		System.out.println("list: " + list);
 		System.out.println("sum: " + sum);
