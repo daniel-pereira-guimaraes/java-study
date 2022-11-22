@@ -7,6 +7,7 @@ public class StreamStudy {
 
 	public static void main(String[] args) {
 		filterIntegerList();
+		upperStringList();
 	}
 	
 	private static void filterIntegerList() {
@@ -20,4 +21,15 @@ public class StreamStudy {
 		System.out.println();
 	}
 
+	private static void upperStringList() {
+		MiscStudy.printMethodName();
+		
+		List<String> normal = Arrays.asList("Brazil", "Italy", "United States", "France");
+		List<String> upper = normal.stream().map(s -> s.toUpperCase()).toList();
+		
+		System.out.println("normal: " + normal);
+		System.out.println("upper: " + upper);
+		System.out.println();
+	}
+	
 }
