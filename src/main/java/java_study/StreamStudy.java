@@ -8,6 +8,7 @@ public class StreamStudy {
 	public static void main(String[] args) {
 		filterIntegerList();
 		upperStringList();
+		stringLengths();
 	}
 	
 	private static void filterIntegerList() {
@@ -29,6 +30,17 @@ public class StreamStudy {
 		
 		System.out.println("normal: " + normal);
 		System.out.println("upper: " + upper);
+		System.out.println();
+	}
+	
+	private static void stringLengths() {
+		MiscStudy.printMethodName();
+		
+		List<String> strings = Arrays.asList("Brazil", "Italy", "United States", "France");
+		int[] lengths = strings.stream().mapToInt(s -> s.length()).toArray();
+		
+		System.out.println("strings: " + strings);
+		System.out.println("lengths: " + Arrays.toString(lengths));
 		System.out.println();
 	}
 	
