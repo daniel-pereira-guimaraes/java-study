@@ -12,6 +12,7 @@ public class StreamStudy {
 		sumIntegerList1();
 		sumIntegerList2();
 		distinctValues();
+		checkIfAllAreOdd();
 	}
 	
 	private static void filterIntegerList() {
@@ -75,6 +76,21 @@ public class StreamStudy {
 		List<Integer> distincts = all.stream().distinct().toList();
 		System.out.println("All values: " + all);
 		System.out.println("Distinct values: " + distincts);
+		System.out.println();
+	}
+	
+	private static void checkIfAllAreOdd() {
+		MiscStudy.printMethodName();
+		List<Integer> list1 = Arrays.asList(2, 4, 16, 14, 8, 2, 19, 10, 12);
+		List<Integer> list2 = Arrays.asList(3, 1, 15, 17, 9, 7, 11, 21, 23);
+		List<Integer> list3 = Arrays.asList(3, 1, 15, 17, 8, 7, 11, 21, 23);
+		List<List<Integer>> listOfLists = Arrays.asList(list1, list2, list3);
+		for (List<Integer> list : listOfLists) {
+			if (list.stream().allMatch(i -> i % 2 == 1))
+				System.out.println(list + ": All are odd!");
+			else
+				System.out.println(list + ": Not all are odd!");
+		}
 		System.out.println();
 	}
 	
