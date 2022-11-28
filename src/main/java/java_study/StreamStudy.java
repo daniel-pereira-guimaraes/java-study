@@ -2,6 +2,7 @@ package java_study;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
 
@@ -16,6 +17,7 @@ public class StreamStudy {
 		distinctValues();
 		checkIfAllAreOdd();
 		convertList();
+		ranking();
 	}
 	
 	private static void filterIntegerList() {
@@ -115,6 +117,15 @@ public class StreamStudy {
 		System.out.println("DTOs:");
 		dtos.forEach(dto -> System.out.println("\t" + dto));
 		
+		System.out.println();
+	}
+	
+	private static void ranking() {
+		MiscStudy.printMethodName();
+		List<Integer> list = Arrays.asList(2, 4, 19, 16, 2, 14, 8, 19, 10, 12, 14);
+		List<Integer> top5 = list.stream().distinct().sorted((a, b) -> b - a).limit(5).toList();
+		System.out.println("List: " + list);
+		System.out.println("Top5: " + top5);
 		System.out.println();
 	}
 	
