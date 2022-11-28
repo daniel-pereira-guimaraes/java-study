@@ -58,4 +58,9 @@ public class Product {
 		return stock > 0; 
 	}
 
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", stock=" + stock + "]";
+	}
+
 }
