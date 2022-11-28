@@ -11,6 +11,7 @@ public class StreamStudy {
 		stringLengths();
 		sumIntegerList1();
 		sumIntegerList2();
+		distinctValues();
 	}
 	
 	private static void filterIntegerList() {
@@ -65,6 +66,15 @@ public class StreamStudy {
 		
 		System.out.println("list: " + list);
 		System.out.println("sum: " + sum);
+		System.out.println();
+	}
+	
+	private static void distinctValues() {
+		MiscStudy.printMethodName();
+		List<Integer> all = Arrays.asList(2, 2, 6, 7, 8, 7, 5, 6, 2);
+		List<Integer> distincts = all.stream().distinct().toList();
+		System.out.println("All values: " + all);
+		System.out.println("Distinct values: " + distincts);
 		System.out.println();
 	}
 	
