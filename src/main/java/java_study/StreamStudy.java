@@ -1,7 +1,9 @@
 package java_study;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
 
 public class StreamStudy {
 
@@ -13,6 +15,7 @@ public class StreamStudy {
 		sumIntegerList2();
 		distinctValues();
 		checkIfAllAreOdd();
+		convertList();
 	}
 	
 	private static void filterIntegerList() {
@@ -91,6 +94,27 @@ public class StreamStudy {
 			else
 				System.out.println(list + ": Not all are odd!");
 		}
+		System.out.println();
+	}
+	
+	private static void convertList() {
+		MiscStudy.printMethodName();
+		
+		List<Product> products = new ArrayList<>();
+		products.add(new Product(1L, "Mouse", 15.0, 50));
+		products.add(new Product(2L, "Keyboard", 25.0, 30));
+		products.add(new Product(3L, "TV", 240.0, 20));
+		products.add(new Product(4L, "Tablet", 120.0, 15));
+		
+		List<ProductDTO> dtos = products.stream().map(
+			p -> new ProductDTO(p.getName(), p.getPrice())).toList();
+		
+		System.out.println("PRODUCTS:");
+		products.forEach(p -> System.out.println("\t" + p));
+		
+		System.out.println("DTOs:");
+		dtos.forEach(dto -> System.out.println("\t" + dto));
+		
 		System.out.println();
 	}
 	
