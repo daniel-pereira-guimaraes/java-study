@@ -20,6 +20,7 @@ public class StreamStudy {
 		convertList();
 		ranking();
 		iterateAndLimite();
+		fibonacci((byte)10);
 	}
 	
 	private static void filterIntegerList() {
@@ -139,6 +140,15 @@ public class StreamStudy {
 
 		stream = Stream.iterate(1, x -> 3 * x);
 		System.out.println(Arrays.toString(stream.limit(10).toArray()));
+		
+		System.out.println();
+	}
+	
+	private static void fibonacci(byte n) {
+		MiscStudy.printMethodName();
+		
+		Stream<Long> stream = Stream.iterate(new Long[] {0L, 1L}, p -> new Long[] {p[1], p[0] + p[1]}).map(p -> p[0]);
+		System.out.println(Arrays.toString(stream.limit(n).toArray()));
 		
 		System.out.println();
 	}
