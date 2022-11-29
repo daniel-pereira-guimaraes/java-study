@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class StreamStudy {
@@ -22,6 +23,7 @@ public class StreamStudy {
 		iterateAndLimite();
 		fibonacci((byte)10);
 		multiplyIntegers();
+		filterMapCollect();
 	}
 	
 	private static void filterIntegerList() {
@@ -163,6 +165,20 @@ public class StreamStudy {
 		System.out.println("List: " + list);
 		System.out.println("Result: " + result);
 		System.out.println();
-	} 
+	}
+	
+	private static void filterMapCollect() {
+		MiscStudy.printMethodName();
+		
+		List<Integer> list1 = Arrays.asList(1,2,3,4,5,6,7,8,9);
+		List<Integer> list2 = list1.stream()
+			.filter(i -> i % 2 == 0)
+			.map(i -> i * 10)
+			.collect(Collectors.toList());
+		
+		System.out.println("List1: " + list1);
+		System.out.println("List2: " + list2);
+		System.out.println();
+	}
 	
 }
