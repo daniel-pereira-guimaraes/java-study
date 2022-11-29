@@ -21,6 +21,7 @@ public class StreamStudy {
 		ranking();
 		iterateAndLimite();
 		fibonacci((byte)10);
+		multiplyIntegers();
 	}
 	
 	private static void filterIntegerList() {
@@ -152,5 +153,16 @@ public class StreamStudy {
 		
 		System.out.println();
 	}
+	
+	private static void multiplyIntegers() {
+		MiscStudy.printMethodName();
+		
+		List<Integer> list = Arrays.asList(2, 5, 3, 4);
+		int result = list.stream().reduce(1,  (a, b) -> a * b);
+		
+		System.out.println("List: " + list);
+		System.out.println("Result: " + result);
+		System.out.println();
+	} 
 	
 }
