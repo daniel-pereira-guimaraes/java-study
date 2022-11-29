@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
+import java.util.stream.Stream;
 
 public class StreamStudy {
 
@@ -18,6 +19,7 @@ public class StreamStudy {
 		checkIfAllAreOdd();
 		convertList();
 		ranking();
+		iterateAndLimite();
 	}
 	
 	private static void filterIntegerList() {
@@ -126,6 +128,18 @@ public class StreamStudy {
 		List<Integer> top5 = list.stream().distinct().sorted((a, b) -> b - a).limit(5).toList();
 		System.out.println("List: " + list);
 		System.out.println("Top5: " + top5);
+		System.out.println();
+	}
+	
+	private static void iterateAndLimite() {
+		MiscStudy.printMethodName();
+		
+		Stream<Integer> stream = Stream.iterate(1, x -> 3 * x);
+		System.out.println(Arrays.toString(stream.limit(5).toArray()));
+
+		stream = Stream.iterate(1, x -> 3 * x);
+		System.out.println(Arrays.toString(stream.limit(10).toArray()));
+		
 		System.out.println();
 	}
 	
