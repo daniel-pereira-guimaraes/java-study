@@ -147,7 +147,7 @@ public class StreamStudy {
 	private static void fibonacci(byte n) {
 		MiscStudy.printMethodName();
 		
-		Stream<Long> stream = Stream.iterate(new Long[] {0L, 1L}, p -> new Long[] {p[1], p[0] + p[1]}).map(p -> p[0]);
+		Stream<Long> stream = Stream.iterate(new Long[] {0L, 1L}, a -> new Long[] {a[1], a[0] + a[1]}).map(b -> b[1]);
 		System.out.println(Arrays.toString(stream.limit(n).toArray()));
 		
 		System.out.println();
