@@ -24,6 +24,7 @@ public class StreamStudy {
 		fibonacci((byte)10);
 		multiplyIntegers();
 		filterMapCollect();
+		arithmeticAverage();
 	}
 	
 	private static void filterIntegerList() {
@@ -178,6 +179,17 @@ public class StreamStudy {
 		
 		System.out.println("List1: " + list1);
 		System.out.println("List2: " + list2);
+		System.out.println();
+	}
+	
+	private static void arithmeticAverage() {
+		MiscStudy.printMethodName();
+		
+		List<Double> values = Arrays.asList(10.0, 5.0, 2.5, 12.5);
+		Double average = values.stream().reduce(0.0, (a, b) -> a + b) / values.size();
+		
+		System.out.println("Values: " + values);
+		System.out.println("Average: " + average);
 		System.out.println();
 	}
 	
