@@ -2,10 +2,10 @@ package java_study;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.function.Function;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -23,6 +23,7 @@ public class StreamStudy {
 		sortAsc();
 		sortDesc1();
 		sortDesc2();
+		doubleSort();
 		ranking();
 		iterateAndLimite();
 		fibonacci((byte)10);
@@ -160,6 +161,19 @@ public class StreamStudy {
 		List<Integer> list = Arrays.asList(1, 10, 2, 9, 3, 8, 4, 7, 5);
 		List<Integer> sorted = list.stream().sorted((a, b) -> b - a).toList();
 
+		System.out.println("List: " + list);
+		System.out.println("Sorted: " + sorted);
+		System.out.println();
+	}
+
+	private static void doubleSort() {
+		MiscStudy.printMethodName();
+		
+		List<Integer> list = Arrays.asList(1,15,14,2,3,13,12,4,5,11,10,6,7,9,8);
+		List<Integer> sorted = new ArrayList<>();
+		sorted.addAll(list.stream().filter(i -> i % 2 == 1).sorted().toList());
+		sorted.addAll(list.stream().filter(i -> i % 2 == 0).sorted().toList());
+		
 		System.out.println("List: " + list);
 		System.out.println("Sorted: " + sorted);
 		System.out.println();
