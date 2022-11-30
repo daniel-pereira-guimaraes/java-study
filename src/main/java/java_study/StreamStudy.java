@@ -3,6 +3,7 @@ package java_study;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -20,6 +21,7 @@ public class StreamStudy {
 		checkIfAllAreOdd();
 		convertList();
 		sortAsc();
+		sortDesc1();
 		ranking();
 		iterateAndLimite();
 		fibonacci((byte)10);
@@ -133,6 +135,19 @@ public class StreamStudy {
 		
 		List<Integer> list = Arrays.asList(3, 4, 1, 10, 5, 2);
 		List<Integer> sorted = list.stream().sorted().toList();
+		System.out.println("List: " + list);
+		System.out.println("Sorted: " + sorted);
+		System.out.println();
+	}
+
+	private static void sortDesc1() {
+		MiscStudy.printMethodName();
+		
+		Comparator<Integer> comp = (a, b) -> a.compareTo(b);
+		
+		List<Integer> list = Arrays.asList(3, 1, 5, 2, 8, 4, 10);
+		List<Integer> sorted = list.stream().sorted(comp.reversed()).toList();
+		
 		System.out.println("List: " + list);
 		System.out.println("Sorted: " + sorted);
 		System.out.println();
