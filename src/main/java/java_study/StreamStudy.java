@@ -19,6 +19,7 @@ public class StreamStudy {
 		distinctValues();
 		checkIfAllAreOdd();
 		convertList();
+		sortAsc();
 		ranking();
 		iterateAndLimite();
 		fibonacci((byte)10);
@@ -26,7 +27,7 @@ public class StreamStudy {
 		filterMapCollect();
 		arithmeticAverage();
 	}
-	
+
 	private static void filterIntegerList() {
 		MiscStudy.printMethodName();
 		
@@ -127,6 +128,16 @@ public class StreamStudy {
 		System.out.println();
 	}
 	
+	private static void sortAsc() {
+		MiscStudy.printMethodName();
+		
+		List<Integer> list = Arrays.asList(3, 4, 1, 10, 5, 2);
+		List<Integer> sorted = list.stream().sorted().toList();
+		System.out.println("List: " + list);
+		System.out.println("Sorted: " + sorted);
+		System.out.println();
+	}
+
 	private static void ranking() {
 		MiscStudy.printMethodName();
 		List<Integer> list = Arrays.asList(2, 4, 19, 16, 2, 14, 8, 19, 10, 12, 14);
