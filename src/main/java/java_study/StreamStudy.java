@@ -22,6 +22,7 @@ public class StreamStudy {
 		convertList();
 		sortAsc();
 		sortDesc1();
+		sortDesc2();
 		ranking();
 		iterateAndLimite();
 		fibonacci((byte)10);
@@ -153,6 +154,17 @@ public class StreamStudy {
 		System.out.println();
 	}
 
+	private static void sortDesc2() {
+		MiscStudy.printMethodName();
+		
+		List<Integer> list = Arrays.asList(1, 10, 2, 9, 3, 8, 4, 7, 5);
+		List<Integer> sorted = list.stream().sorted((a, b) -> b - a).toList();
+
+		System.out.println("List: " + list);
+		System.out.println("Sorted: " + sorted);
+		System.out.println();
+	}
+	
 	private static void ranking() {
 		MiscStudy.printMethodName();
 		List<Integer> list = Arrays.asList(2, 4, 19, 16, 2, 14, 8, 19, 10, 12, 14);
