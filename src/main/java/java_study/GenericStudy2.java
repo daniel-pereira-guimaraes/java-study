@@ -30,7 +30,8 @@ public class GenericStudy2 {
 		
 		public void print(String caption) {
 			checkEmpty();
-			if (caption != null && !caption.isBlank())
+//			if (caption != null && !caption.isBlank()) // isBlank not in Java 8?
+			if (caption != null && !caption.equals(""))
 				System.out.print(caption + ": ");
 			System.out.print("[");
 			for (int i = 0; i < list.size(); i++) {

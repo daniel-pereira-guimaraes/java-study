@@ -91,7 +91,9 @@ public class LambdaStudy {
 		products.add(new Product("Mouse", 10.0));
 		products.add(new Product("Keyboard", 15.0));
 		
-		List<String> names = products.stream().map(p -> p.getName().toUpperCase()).toList();
+		// toList not in Java 8?
+		//List<String> names = products.stream().map(p -> p.getName().toUpperCase()).toList();
+		List<String> names = products.stream().map(p -> p.getName().toUpperCase()).collect(Collectors.toList());
 		names.forEach(System.out::println);
 		System.out.println();
 	}
@@ -102,7 +104,9 @@ public class LambdaStudy {
 		List<String> list = Arrays.asList("Joe", "Gilbert", "Amelia", "Lee", "Anna");
 		
 		Predicate<String> p = s -> s.toUpperCase().contains("E");
-		List<String> filteredList = list.stream().filter(p).toList();
+		// toList not in Java 8?
+		//List<String> filteredList = list.stream().filter(p).toList();
+		List<String> filteredList = list.stream().filter(p).collect(Collectors.toList());
 		
 		filteredList.forEach(System.out::println);
 		System.out.println();
@@ -117,7 +121,9 @@ public class LambdaStudy {
 		products.add(new Product("Keyboard", 15.0, 500));
 		products.add(new Product("HD", 300.0));
 		
-		List<Product> availables = products.stream().filter(Product::isAvailable).toList();
+		// toList not in Java 8?
+		//List<Product> availables = products.stream().filter(Product::isAvailable).toList();
+		List<Product> availables = products.stream().filter(Product::isAvailable).collect(Collectors.toList());
 		
 		availables.forEach(p -> System.out.println(p.getName()));
 		System.out.println();

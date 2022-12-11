@@ -95,7 +95,7 @@ public class DateTimeStudy {
 	private static void calendarOperations() {
 		MiscStudy.printMethodName();
 		
-		Date dt01 = Date.from(Instant.parse("2022-11-08T20:27:05-04:00"));
+		Date dt01 = Date.from(Instant.parse("2022-11-08T20:27:05.00Z"));
 		Date dt02 = calendarAdd(dt01, Calendar.HOUR, 5);
 		Date dt03 = calendarAdd(dt01, Calendar.HOUR_OF_DAY, 5);
 		Date dt04 = calendarAdd(dt01, Calendar.HOUR, -3);
@@ -251,7 +251,7 @@ public class DateTimeStudy {
 		System.out.println("durarion - days: " + duration.toDays());
 		System.out.println("durarion - hours: " + duration.toHours());
 		System.out.println("durarion - minutes: " + duration.toMinutes());
-		System.out.println("durarion - seconds: " + duration.toSeconds());
+		//System.out.println("durarion - seconds: " + duration.toSeconds()); // toSeconds not in Java 8?
 		
 		System.out.println();
 	}
@@ -321,7 +321,8 @@ public class DateTimeStudy {
 		Instant dt00 = Instant.now();
 		ZonedDateTime dt01 = dt00.atZone(ZoneId.of("America/Sao_Paulo"));
 		Instant dt02 = Instant.parse("2022-11-07T23:51:00Z");
-		Instant dt03 = Instant.parse("2022-11-07T19:51:00-04:00");
+		//Instant dt03 = Instant.parse("2022-11-07T19:51:00-04:00"); // -04:00 not supported by Java 8?
+		Instant dt03 = Instant.parse("2022-11-07T19:51:00Z"); // -04:00 not supported by Java 8?
 		LocalDateTime dt04 = LocalDateTime.ofInstant(dt00, ZoneId.of("America/Sao_Paulo"));
 		LocalDateTime dt05 = LocalDateTime.ofInstant(dt00, ZoneId.of("-03:00"));
 		LocalDateTime dt06 = LocalDateTime.ofInstant(dt00, ZoneId.systemDefault());

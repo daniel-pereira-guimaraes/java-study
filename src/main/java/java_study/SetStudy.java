@@ -23,7 +23,8 @@ public class SetStudy {
 	private static void operationsWithSet() {
 		MiscStudy.printMethodName();
 		
-		Set<Integer> set = Set.of(5, 9, 10, 3);
+		//Set<Integer> set = Set.of(5, 9, 10, 3); // Set.of not in Java 8?
+		Set<Integer> set = new HashSet<>(Arrays.asList(5, 9, 10, 3));
 		
 		System.out.print("Elements: ");
 		boolean first = true;
@@ -39,7 +40,8 @@ public class SetStudy {
 		
 		System.out.println("Checking if it contains collections of elements...");
 		List<Integer> list = Arrays.asList(3, 5, 10);
-		Set<Integer> primes = Set.of(2, 3, 5);
+		//Set<Integer> primes = Set.of(2, 3, 5); // Set.of not in Java 8?
+		Set<Integer> primes = new HashSet<>(Arrays.asList(2, 3, 5));
 		System.out.println("\tset.containsAll(" + list + "): " + set.containsAll(list));
 		System.out.println("\tset.containsAll(" + primes + "): " + set.containsAll(primes));
 		System.out.println();

@@ -36,7 +36,8 @@ public class StreamStudy {
 		MiscStudy.printMethodName();
 		
 		List<Integer> all = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
-		List<Integer> odd = all.stream().filter(i -> i % 2 == 1).toList();
+		// List<Integer> odd = all.stream().filter(i -> i % 2 == 1).toList(); // toList not in Java 8?
+		List<Integer> odd = all.stream().filter(i -> i % 2 == 1).collect(Collectors.toList());
 		
 		System.out.println("all: " + all);
 		System.out.println("odd: " + odd);
@@ -47,7 +48,7 @@ public class StreamStudy {
 		MiscStudy.printMethodName();
 		
 		List<String> normal = Arrays.asList("Brazil", "Italy", "United States", "France");
-		List<String> upper = normal.stream().map(s -> s.toUpperCase()).toList();
+		List<String> upper = normal.stream().map(s -> s.toUpperCase()).collect(Collectors.toList());
 		
 		System.out.println("normal: " + normal);
 		System.out.println("upper: " + upper);
@@ -90,7 +91,7 @@ public class StreamStudy {
 	private static void distinctValues() {
 		MiscStudy.printMethodName();
 		List<Integer> all = Arrays.asList(2, 2, 6, 7, 8, 7, 5, 6, 2);
-		List<Integer> distincts = all.stream().distinct().toList();
+		List<Integer> distincts = all.stream().distinct().collect(Collectors.toList());
 		System.out.println("All values: " + all);
 		System.out.println("Distinct values: " + distincts);
 		System.out.println();
@@ -121,7 +122,7 @@ public class StreamStudy {
 		products.add(new Product(4L, "Tablet", 120.0, 15));
 		
 		List<ProductDTO> dtos = products.stream().map(
-			p -> new ProductDTO(p.getName(), p.getPrice())).toList();
+			p -> new ProductDTO(p.getName(), p.getPrice())).collect(Collectors.toList());
 		
 		System.out.println("PRODUCTS:");
 		products.forEach(p -> System.out.println("\t" + p));
@@ -136,7 +137,7 @@ public class StreamStudy {
 		MiscStudy.printMethodName();
 		
 		List<Integer> list = Arrays.asList(3, 4, 1, 10, 5, 2);
-		List<Integer> sorted = list.stream().sorted().toList();
+		List<Integer> sorted = list.stream().sorted().collect(Collectors.toList());
 		System.out.println("List: " + list);
 		System.out.println("Sorted: " + sorted);
 		System.out.println();
@@ -148,7 +149,7 @@ public class StreamStudy {
 		Comparator<Integer> comp = (a, b) -> a.compareTo(b);
 		
 		List<Integer> list = Arrays.asList(3, 1, 5, 2, 8, 4, 10);
-		List<Integer> sorted = list.stream().sorted(comp.reversed()).toList();
+		List<Integer> sorted = list.stream().sorted(comp.reversed()).collect(Collectors.toList());
 		
 		System.out.println("List: " + list);
 		System.out.println("Sorted: " + sorted);
@@ -159,7 +160,7 @@ public class StreamStudy {
 		MiscStudy.printMethodName();
 		
 		List<Integer> list = Arrays.asList(1, 10, 2, 9, 3, 8, 4, 7, 5);
-		List<Integer> sorted = list.stream().sorted((a, b) -> b - a).toList();
+		List<Integer> sorted = list.stream().sorted((a, b) -> b - a).collect(Collectors.toList());
 
 		System.out.println("List: " + list);
 		System.out.println("Sorted: " + sorted);
@@ -171,8 +172,8 @@ public class StreamStudy {
 		
 		List<Integer> list = Arrays.asList(1,15,14,2,3,13,12,4,5,11,10,6,7,9,8);
 		List<Integer> sorted = new ArrayList<>();
-		sorted.addAll(list.stream().filter(i -> i % 2 == 1).sorted().toList());
-		sorted.addAll(list.stream().filter(i -> i % 2 == 0).sorted().toList());
+		sorted.addAll(list.stream().filter(i -> i % 2 == 1).sorted().collect(Collectors.toList()));
+		sorted.addAll(list.stream().filter(i -> i % 2 == 0).sorted().collect(Collectors.toList()));
 		
 		System.out.println("List: " + list);
 		System.out.println("Sorted: " + sorted);
@@ -182,7 +183,7 @@ public class StreamStudy {
 	private static void ranking() {
 		MiscStudy.printMethodName();
 		List<Integer> list = Arrays.asList(2, 4, 19, 16, 2, 14, 8, 19, 10, 12, 14);
-		List<Integer> top5 = list.stream().distinct().sorted((a, b) -> b - a).limit(5).toList();
+		List<Integer> top5 = list.stream().distinct().sorted((a, b) -> b - a).limit(5).collect(Collectors.toList());
 		System.out.println("List: " + list);
 		System.out.println("Top5: " + top5);
 		System.out.println();
