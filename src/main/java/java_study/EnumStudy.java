@@ -3,11 +3,9 @@ package java_study;
 public class EnumStudy {
 
 	public static void main(String[] args) {
-		
 		basicEnumOperations();
 		enumWithCustomValues();
-		
-		
+		printEnumValues();
 	}
 	
 	private static enum SaleStatus {
@@ -77,7 +75,18 @@ public class EnumStudy {
 		
 		System.out.println("seasons1.ordinal(): " + seasons1.ordinal());
 		System.out.println("seasons2.ordinal(): " + seasons2.ordinal());
+		System.out.println();
 	}
+	
+	private static void printEnumValues() {
+		MiscStudy.printMethodName();
+
+		for (YearSeasons seasons : YearSeasons.values())
+			System.out.println(seasons);
+		
+		System.out.println();
+	}
+	
 }
 
 
