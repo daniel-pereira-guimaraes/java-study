@@ -8,6 +8,10 @@ public class ProductGroup implements Serializable {
 	private Long id;
 	private String name;
 	
+	public ProductGroup() {
+		
+	}
+	
 	public ProductGroup(Long id, String name) {
 		super();
 		this.id = id;

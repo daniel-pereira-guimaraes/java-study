@@ -11,6 +11,10 @@ public class Product implements Serializable {
 	private Integer stock = 0;
 	private ProductGroup group;
 
+	public Product() {
+		
+	}
+	
 	public Product(String name, Double price) {
 		this.name = name;
 		this.price = price;
