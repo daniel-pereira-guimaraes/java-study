@@ -3,7 +3,6 @@
 	<groupId>br.com.example</groupId>
 	<artifactId>java_study</artifactId>
 	<version>1.0</version>
-
 	<dependencies>
 		<dependency>
 			<groupId>commons-io</groupId>
@@ -14,6 +13,11 @@
 			<groupId> com.sun.mail </groupId>
 			<artifactId> javax.mail </artifactId>
 			<version> 1.6.2 </version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.12.0</version>
 		</dependency>
 	</dependencies>
 </project>
