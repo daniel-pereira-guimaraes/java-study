@@ -6,6 +6,7 @@ public class EnumStudy {
 		basicEnumOperations();
 		enumWithCustomValues();
 		printEnumValues();
+		testRelationalOperator();
 	}
 	
 	private static enum SaleStatus {
@@ -84,6 +85,66 @@ public class EnumStudy {
 		for (YearSeasons seasons : YearSeasons.values())
 			System.out.println(seasons);
 		
+		System.out.println();
+	}
+	
+	private static enum RelationalOperator {
+		EQUAL("=", "Equal to"),
+		NOT_EQUAL("!=", "Not equal to"),
+		LESS("<", "Less than"),
+		LESS_EQUAL("<=", "Less than or equal to"),
+		GREATER(">", "Greater than"),
+		GREATER_EQUAL(">=", "Greater than or equal to");
+		
+		private String symbol;
+		private String description;
+
+		RelationalOperator(String symbol, String description) {
+			this.symbol = symbol;
+			this.description = description;
+		}
+
+		public String getSymbol() {
+			return this.symbol;
+		}
+
+		public String getDescription() {
+			return description;
+		}
+		
+		@SuppressWarnings({ "rawtypes", "unused", "unchecked" })
+		public boolean compare(Comparable a, Comparable b) {
+			switch (this) {
+				case EQUAL: return a.equals(b);
+				case NOT_EQUAL: return !a.equals(b);
+				case LESS: return a.compareTo(b) < 0;
+				case LESS_EQUAL: return a.compareTo(b) <= 0;
+				case GREATER: return a.compareTo(b) > 0;
+				case GREATER_EQUAL: return a.compareTo(b) >= 0;
+			default:
+				return false;
+			}
+		}
+		
+	}
+	
+	static void testRelationalOperator() {
+		MiscStudy.printMethodName();
+
+		for (RelationalOperator ro : RelationalOperator.values()) {
+			System.out.println(ro.ordinal() + ": " + ro + ", " + 
+				ro.getSymbol() + ", " + ro.getDescription());
+		}
+		System.out.println();
+
+		final Integer a = 5;
+		final Integer b = 6;
+		final Integer c = 7;
+		for (RelationalOperator ro : RelationalOperator.values()) {
+			System.out.println(b + " " + ro.getSymbol() + " " + a + " = " + ro.compare(b, a));
+			System.out.println(b + " " + ro.getSymbol() + " " + b + " = " + ro.compare(b, b));
+			System.out.println(b + " " + ro.getSymbol() + " " + c + " = " + ro.compare(b, c));
+		}
 		System.out.println();
 	}
 	
