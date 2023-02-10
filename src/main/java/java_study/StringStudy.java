@@ -1,11 +1,14 @@
 package java_study;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class StringStudy {
 	
 	public static void main(String[] args) {
 		stringBuilder1();
 		stringBuilder2();
-		concatSpeedTest();
+		//concatSpeedTest();
+		teststripAccents();
 	}
 	
 	public static void stringBuilder1() {
@@ -81,6 +84,15 @@ public class StringStudy {
 		System.out.println("Concatenation: " + t1 + "ms");
 		System.out.println("StringBuffer: " + t2 + "ms");
 		System.out.println("StringBuilder: " + t3 + "ms");
+		System.out.println();
+	}
+	
+	private static void teststripAccents() {
+		MiscStudy.printMethodName();
+		final String withAccents = "äáâàã ëéêè ïíîì öóôòõ üúûù ç ñ";
+		final String withAccentsUp = withAccents.toUpperCase();
+		System.out.println(StringUtils.stripAccents(withAccents));
+		System.out.println(StringUtils.stripAccents(withAccentsUp));
 		System.out.println();
 	}
 
