@@ -3,9 +3,8 @@ package java_study;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -23,7 +22,8 @@ public class StreamStudy {
 		sortAsc();
 		sortDesc1();
 		sortDesc2();
-		doubleSort();
+		doubleSort1();
+		sortByTwoFields();
 		ranking();
 		iterateAndLimite();
 		fibonacci((byte)10);
@@ -167,7 +167,7 @@ public class StreamStudy {
 		System.out.println();
 	}
 
-	private static void doubleSort() {
+	private static void doubleSort1() {
 		MiscStudy.printMethodName();
 		
 		List<Integer> list = Arrays.asList(1,15,14,2,3,13,12,4,5,11,10,6,7,9,8);
@@ -177,6 +177,32 @@ public class StreamStudy {
 		
 		System.out.println("List: " + list);
 		System.out.println("Sorted: " + sorted);
+		System.out.println();
+	}
+
+	private static void sortByTwoFields() {
+		MiscStudy.printMethodName();
+		
+		List<Product> list = Arrays.asList(
+				new Product(1L, "Pencil", 5.0, 30),
+				new Product(2L, "Pen", 5.0, 10),
+				new Product(3L, "Mouse", 10.0, 15),
+				new Product(4L, "Keyboard", 10.0, 5),
+				new Product(5L, "Monitor", 60.0, 3),
+				new Product(6L, "Printer", 60.0, 0));
+		
+		Function<Product, Double> byPrice = p -> p.getPrice();
+		Function<Product, Integer> byStock = p -> p.getStock();
+		Comparator<Product> comparator = Comparator.comparing(byPrice).reversed().thenComparing(byStock);
+		
+		List<Product> sorted = list.stream().sorted(comparator).collect(Collectors.toList());
+
+		System.out.println("LIST:");
+		list.forEach(p -> System.out.println("\t" + p));
+		
+		System.out.println("SORTED:");
+		sorted.forEach(p -> System.out.println("\t" + p));
+
 		System.out.println();
 	}
 	
