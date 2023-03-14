@@ -183,7 +183,7 @@ public class StreamStudy {
 	private static void sortByTwoFields() {
 		MiscStudy.printMethodName();
 		
-		List<Product> list = Arrays.asList(
+		final List<Product> list = Arrays.asList(
 				new Product(1L, "Pencil", 5.0, 30),
 				new Product(2L, "Pen", 5.0, 10),
 				new Product(3L, "Mouse", 10.0, 15),
@@ -191,11 +191,11 @@ public class StreamStudy {
 				new Product(5L, "Monitor", 60.0, 3),
 				new Product(6L, "Printer", 60.0, 0));
 		
-		Function<Product, Double> byPrice = p -> p.getPrice();
-		Function<Product, Integer> byStock = p -> p.getStock();
-		Comparator<Product> comparator = Comparator.comparing(byPrice).reversed().thenComparing(byStock);
+		final Function<Product, Double> byPrice = p -> p.getPrice();
+		final Function<Product, Integer> byStock = p -> p.getStock();
+		final Comparator<Product> comparator = Comparator.comparing(byPrice).reversed().thenComparing(byStock);
 		
-		List<Product> sorted = list.stream().sorted(comparator).collect(Collectors.toList());
+		final List<Product> sorted = list.stream().sorted(comparator).collect(Collectors.toList());
 
 		System.out.println("LIST:");
 		list.forEach(p -> System.out.println("\t" + p));
