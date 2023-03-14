@@ -23,6 +23,7 @@ public class StreamStudy {
 		sortDesc1();
 		sortDesc2();
 		doubleSort1();
+		doubleSort2();
 		sortByTwoFields();
 		ranking();
 		iterateAndLimite();
@@ -174,6 +175,22 @@ public class StreamStudy {
 		List<Integer> sorted = new ArrayList<>();
 		sorted.addAll(list.stream().filter(i -> i % 2 == 1).sorted().collect(Collectors.toList()));
 		sorted.addAll(list.stream().filter(i -> i % 2 == 0).sorted().collect(Collectors.toList()));
+		
+		System.out.println("List: " + list);
+		System.out.println("Sorted: " + sorted);
+		System.out.println();
+	}
+	
+	private static void doubleSort2() {
+		MiscStudy.printMethodName();
+		
+		final List<Integer> list = Arrays.asList(1,15,14,2,3,13,12,4,5,11,10,6,7,9,8);
+
+		final Comparator<Integer> comparator = Comparator
+				.comparing((Integer n) -> n % 2 == 0 ? 1 : -1)
+				.thenComparing(n -> n);
+		
+		List<Integer> sorted = list.stream().sorted(comparator).collect(Collectors.toList());
 		
 		System.out.println("List: " + list);
 		System.out.println("Sorted: " + sorted);
