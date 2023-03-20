@@ -30,8 +30,9 @@ public class LambdaStudy {
 		filterList1();
 		filterList2();
 		testSumIf();
+		printFunctionResult(a -> 2 * a);
 	}
-	
+
 	private static void sortByLength() {
 		MiscStudy.printMethodName();
 		List<String> names = Arrays.asList("Joe", "Gilbert", "Amelia", "Jhon", "Bob");
@@ -157,6 +158,13 @@ public class LambdaStudy {
 
 		System.out.println();
 	}
-	
+
+	private static void printFunctionResult(Function<Long, Object> function) {
+		MiscStudy.printMethodName();
+		for (Long i = 0L; i < 10; i++)
+			System.out.println(function.apply(i));
+		System.out.println();
+	}
+
 
 }
