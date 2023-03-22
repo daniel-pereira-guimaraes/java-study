@@ -34,7 +34,8 @@ public class LambdaStudy {
 		filterList2();
 		testSumIf();
 		printFunctionResult(a -> 2 * a);
-		printData((label, value) -> System.out.println(label + ": " + value));  
+		printData((label, value) -> System.out.println(label + ": " + value));
+		printData(DataPrinter::printLabelEqualValue);
 	}
 
 	private static void sortByLength() {
@@ -172,7 +173,12 @@ public class LambdaStudy {
 
 	@FunctionalInterface
 	public static interface DataPrinter {
+		
 		public void print(String label, Object value);
+		
+		static void printLabelEqualValue(String label, Object value) {
+			System.out.println(label + " = " + value);
+		}
 	}
 	
 	private static void printData(DataPrinter dataPrinter) {
