@@ -170,6 +170,7 @@ public class LambdaStudy {
 		System.out.println();
 	}
 
+	@FunctionalInterface
 	public static interface DataPrinter {
 		public void print(String label, Object value);
 	}
