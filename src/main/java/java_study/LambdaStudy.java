@@ -3,7 +3,10 @@ package java_study;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -31,6 +34,7 @@ public class LambdaStudy {
 		filterList2();
 		testSumIf();
 		printFunctionResult(a -> 2 * a);
+		printData((label, value) -> System.out.println(label + ": " + value));  
 	}
 
 	private static void sortByLength() {
@@ -166,5 +170,20 @@ public class LambdaStudy {
 		System.out.println();
 	}
 
+	public static interface DataPrinter {
+		public void print(String label, Object value);
+	}
+	
+	private static void printData(DataPrinter dataPrinter) {
+		MiscStudy.printMethodName();
+		final Map<String, Object> data = new LinkedHashMap<>();
+		data.put("Id", 1L);
+		data.put("Name", "Keyboard");
+		data.put("Price", 15.5);
+		for (Entry<String, Object> entry : data.entrySet()) {
+			dataPrinter.print(entry.getKey(), entry.getValue());
+		}
+		System.out.println();
+	}
 
 }
