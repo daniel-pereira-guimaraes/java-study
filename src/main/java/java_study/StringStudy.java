@@ -8,7 +8,7 @@ public class StringStudy {
 		stringBuilder1();
 		stringBuilder2();
 		//concatSpeedTest();
-		teststripAccents();
+		testStripAccents();
 	}
 	
 	public static void stringBuilder1() {
@@ -87,12 +87,13 @@ public class StringStudy {
 		System.out.println();
 	}
 	
-	private static void teststripAccents() {
+	private static void testStripAccents() {
 		MiscStudy.printMethodName();
 		final String withAccents = "äáâàã ëéêè ïíîì öóôòõ üúûù ç ñ";
-		final String withAccentsUp = withAccents.toUpperCase();
+		System.out.println(withAccents);
 		System.out.println(StringUtils.stripAccents(withAccents));
-		System.out.println(StringUtils.stripAccents(withAccentsUp));
+		System.out.println(withAccents.toUpperCase());
+		System.out.println(StringUtils.stripAccents(withAccents.toUpperCase()));
 		System.out.println();
 	}
 
