@@ -1,6 +1,7 @@
 package java_study;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -83,6 +84,14 @@ public class Product implements Serializable {
 	public String toString() {
 		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", stock=" + stock + ", group=" + group
 				+ "]";
+	}
+	
+	private int privateMethodForTest(List<Integer> list) {
+		int sum = 0;
+		for (Integer i : list) {
+			sum += i == null ? 0 : i.intValue();
+		}
+		return sum;
 	}
 
 }
