@@ -10,6 +10,7 @@ public class MockitoStudy {
 	public static void main(String[] args) throws ParseException {
 		mockCalculator();
 		mockDateTime();
+		spyDateTime();
 	}
 	
 	private static void useCalculator(Calculator calculator) {
@@ -46,6 +47,27 @@ public class MockitoStudy {
 		System.out.println("MOCKED INSTANCE");
 		System.out.println("\tLocal date: " + mockedDateTimeService.localDate());
 		System.out.println("\tLocal time: " + mockedDateTimeService.localTime());
+		
+		System.out.println();
+	}
+	
+	private static void spyDateTime() {
+		
+		final DateTimeService concreteDateTimeService = new DateTimeService();
+		
+		final long start = System.currentTimeMillis();
+		System.out.println("Creating Spy DateTimeService...");
+		final DateTimeService spyDateTimeService = Mockito.spy(DateTimeService.class);
+		Mockito.when(spyDateTimeService.localDate()).thenReturn(LocalDate.of(2023, 6, 1));
+		System.out.println("Spy DateTimeService created in " + (System.currentTimeMillis() - start) + " ms");
+
+		System.out.println("CONCRETE INSTANCE");
+		System.out.println("\tLocal date: " + concreteDateTimeService.localDate());
+		System.out.println("\tLocal time: " + concreteDateTimeService.localTime());
+
+		System.out.println("SPY INSTANCE");
+		System.out.println("\tLocal date: " + spyDateTimeService.localDate());
+		System.out.println("\tLocal time: " + spyDateTimeService.localTime());
 		
 		System.out.println();
 	}
