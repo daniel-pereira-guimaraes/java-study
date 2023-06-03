@@ -7,7 +7,7 @@ public class StringStudy {
 	public static void main(String[] args) {
 		stringBuilder1();
 		stringBuilder2();
-		//concatSpeedTest();
+		concatSpeedTest();
 		testStripAccents();
 	}
 	

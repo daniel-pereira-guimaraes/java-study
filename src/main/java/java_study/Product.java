@@ -86,6 +86,7 @@ public class Product implements Serializable {
 				+ "]";
 	}
 	
+	@SuppressWarnings("unused")
 	private int privateMethodForTest(List<Integer> list) {
 		int sum = 0;
 		for (Integer i : list) {

@@ -14,7 +14,7 @@ public class BlockStudy {
 		System.out.println("Printed by static main method.");
 		
 		System.out.println("Creating instance of " + BlockStudy.class.getSimpleName());
-		BlockStudy sbs = new BlockStudy();
+		new BlockStudy();
 		System.out.println("Instance created!");
 	}
 
