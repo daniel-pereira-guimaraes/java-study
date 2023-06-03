@@ -1,18 +1,21 @@
 package java_study;
 
+import java.text.ParseException;
+import java.time.LocalDate;
+
 import org.mockito.Mockito;
 
 public class MockitoStudy {
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException {
 		mockCalculator();
+		mockDateTime();
 	}
 	
 	private static void useCalculator(Calculator calculator) {
 		MiscStudy.printMethodName();
 		System.out.println("Sum: " + calculator.sum(2, 3));
 		System.out.println("Mult: " + calculator.mult(3, 4));
-		System.out.println();
 	}
 	
 	private static void mockCalculator() {
@@ -23,9 +26,28 @@ public class MockitoStudy {
 		System.out.println("Calculator mocked in " + (System.currentTimeMillis() - start) + " ms");
 		Mockito.when(calculator.sum(2, 3)).thenReturn(10);
 		useCalculator(calculator);
-		System.out.println(MiscStudy.getMethodName() + " - Done!");
+		System.out.println();
 	}
 	
-	
+	private static void mockDateTime() {
+		
+		final DateTimeService concreteDateTimeService = new DateTimeService();
+		
+		final long start = System.currentTimeMillis();
+		System.out.println("Mocking DateTimeService...");
+		final DateTimeService mockedDateTimeService = Mockito.mock(DateTimeService.class);
+		Mockito.when(mockedDateTimeService.localDate()).thenReturn(LocalDate.of(2023, 6, 1));
+		System.out.println("DateTimeService mocked in " + (System.currentTimeMillis() - start) + " ms");
+
+		System.out.println("CONCRETE INSTANCE");
+		System.out.println("\tLocal date: " + concreteDateTimeService.localDate());
+		System.out.println("\tLocal time: " + concreteDateTimeService.localTime());
+
+		System.out.println("MOCKED INSTANCE");
+		System.out.println("\tLocal date: " + mockedDateTimeService.localDate());
+		System.out.println("\tLocal time: " + mockedDateTimeService.localTime());
+		
+		System.out.println();
+	}
 
 }
