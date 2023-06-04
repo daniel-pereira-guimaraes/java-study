@@ -31,6 +31,7 @@ public class MockitoStudy {
 	}
 	
 	private static void mockDateTime() {
+		MiscStudy.printMethodName();
 		
 		final DateTimeService concreteDateTimeService = new DateTimeService();
 		
@@ -52,7 +53,7 @@ public class MockitoStudy {
 	}
 	
 	private static void spyDateTime() {
-		
+		MiscStudy.printMethodName();
 		final DateTimeService concreteDateTimeService = new DateTimeService();
 		
 		final long start = System.currentTimeMillis();
