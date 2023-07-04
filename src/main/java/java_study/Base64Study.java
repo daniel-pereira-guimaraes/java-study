@@ -8,6 +8,7 @@ public class Base64Study {
 	public static void main(String[] args) throws Throwable {
 
 		base64EncodeDecode();
+		mimeEncodeDecode();
 		
 	}
 	
@@ -18,6 +19,19 @@ public class Base64Study {
 		final String encoded = Base64.getEncoder().encodeToString(input.getBytes("utf-8"));
 		final String decoded = new String(Base64.getDecoder().decode(encoded.getBytes()), "utf-8");
 		
+		System.out.println("\tinput: " + input);
+		System.out.println("\tencoded: " + encoded);
+		System.out.println("\tdecoded: " + decoded);
+		System.out.println();
+	}
+	
+	private static void mimeEncodeDecode() {
+		MiscStudy.printMethodName();
+		
+		final String input = "I like Java";
+		final String encoded = Base64.getMimeEncoder().encodeToString(input.getBytes());
+		final String decoded = new String(Base64.getMimeDecoder().decode(encoded));
+
 		System.out.println("\tinput: " + input);
 		System.out.println("\tencoded: " + encoded);
 		System.out.println("\tdecoded: " + decoded);
