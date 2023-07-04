@@ -16,7 +16,7 @@ public class Base64Study {
 		
 		final String input = "I like Java";
 		final String encoded = Base64.getEncoder().encodeToString(input.getBytes("utf-8"));
-		final String decoded = new String(Base64.getDecoder().decode(encoded.getBytes()));
+		final String decoded = new String(Base64.getDecoder().decode(encoded.getBytes()), "utf-8");
 		
 		System.out.println("\tinput: " + input);
 		System.out.println("\tencoded: " + encoded);
