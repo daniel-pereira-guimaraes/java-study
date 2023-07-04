@@ -9,6 +9,7 @@ public class Base64Study {
 
 		base64EncodeDecode();
 		mimeEncodeDecode();
+		urlEncodeDecode();
 		
 	}
 	
@@ -31,6 +32,19 @@ public class Base64Study {
 		final String input = "I like Java";
 		final String encoded = Base64.getMimeEncoder().encodeToString(input.getBytes());
 		final String decoded = new String(Base64.getMimeDecoder().decode(encoded));
+
+		System.out.println("\tinput: " + input);
+		System.out.println("\tencoded: " + encoded);
+		System.out.println("\tdecoded: " + decoded);
+		System.out.println();
+	}
+	
+	private static void urlEncodeDecode() {
+		MiscStudy.printMethodName();
+		
+		final String input = "https://www.google.com/search?q=I+like+Java";
+		final String encoded = Base64.getUrlEncoder().encodeToString(input.getBytes());
+		final String decoded = new String(Base64.getUrlDecoder().decode(encoded));
 
 		System.out.println("\tinput: " + input);
 		System.out.println("\tencoded: " + encoded);
