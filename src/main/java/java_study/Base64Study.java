@@ -7,11 +7,11 @@ public class Base64Study {
 
 	public static void main(String[] args) throws Throwable {
 
-		encodeDecodeBase64();
+		base64EncodeDecode();
 		
 	}
 	
-	private static void encodeDecodeBase64() throws UnsupportedEncodingException {
+	private static void base64EncodeDecode() throws UnsupportedEncodingException {
 		MiscStudy.printMethodName();
 		
 		final String input = "I like Java";
@@ -23,4 +23,5 @@ public class Base64Study {
 		System.out.println("\tdecoded: " + decoded);
 		System.out.println();
 	}
+	
 }
