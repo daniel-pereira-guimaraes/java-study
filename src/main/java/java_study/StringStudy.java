@@ -1,5 +1,7 @@
 package java_study;
 
+import java.util.StringTokenizer;
+
 import org.apache.commons.lang3.StringUtils;
 
 public class StringStudy {
@@ -9,6 +11,7 @@ public class StringStudy {
 		stringBuilder2();
 		concatSpeedTest();
 		testStripAccents();
+		testStringTokenizer();
 	}
 	
 	public static void stringBuilder1() {
@@ -51,7 +54,7 @@ public class StringStudy {
 		
 		String s1, s2, s3;
 		long t1, t2, t3;
-		final int count = 90000;
+		final int count = 9000;
 		System.out.println("Processing...");
 
 		// Concatenation
@@ -94,6 +97,29 @@ public class StringStudy {
 		System.out.println(StringUtils.stripAccents(withAccents));
 		System.out.println(withAccents.toUpperCase());
 		System.out.println(StringUtils.stripAccents(withAccents.toUpperCase()));
+		System.out.println();
+	}
+	
+	private static void testStringTokenizer() {
+		MiscStudy.printMethodName();
+		final String text = "-I-like-Java!-";
+		System.out.println("input: " + text);
+		System.out.println("Only tokens:");
+		StringTokenizer st = new StringTokenizer(text, "-");
+		System.out.println("\tcountTokens: " + st.countTokens());
+		System.out.println("\tElements:");
+		while (st.hasMoreElements()) {
+			System.out.println("\t\t" + st.nextElement());
+		}
+		
+		System.out.println("Tokens + delims:");
+		st = new StringTokenizer(text, "-", true);
+		System.out.println("\tcountTokens: " + st.countTokens());
+		System.out.println("\tElements:");
+		while (st.hasMoreElements()) {
+			System.out.println("\t\t" + st.nextElement());
+		}
+		
 		System.out.println();
 	}
 
