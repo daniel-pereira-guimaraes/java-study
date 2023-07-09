@@ -1,5 +1,6 @@
 package java_study;
 
+import java.util.StringJoiner;
 import java.util.StringTokenizer;
 
 import org.apache.commons.lang3.StringUtils;
@@ -12,6 +13,7 @@ public class StringStudy {
 		concatSpeedTest();
 		testStripAccents();
 		testStringTokenizer();
+		testStringJoiner();
 	}
 	
 	public static void stringBuilder1() {
@@ -123,4 +125,31 @@ public class StringStudy {
 		System.out.println();
 	}
 
+	private static void testStringJoiner() {
+		
+		MiscStudy.printMethodName();
+		
+		final String emptyValue = "EMPTY";
+		
+		final StringJoiner sj1 = new StringJoiner(",", "[", "]");
+		
+		sj1.setEmptyValue(emptyValue);
+
+		System.out.println("sj1 before add: " + sj1);
+		sj1.add("One");
+		sj1.add("Two");
+		sj1.add("Three");
+		System.out.println("sj1 after add: " + sj1);
+		System.out.println();
+		
+		final StringJoiner sj2 = new StringJoiner("-", "(", ")");
+		sj2.add("A");
+		sj2.add("B");
+		System.out.println("sj2 before merge: " + sj2);
+
+		sj2.merge(sj1);
+		System.out.println("sj2 after merge: " + sj2);
+		
+		System.out.println();
+	}
 }
