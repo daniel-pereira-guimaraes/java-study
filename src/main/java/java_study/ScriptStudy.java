@@ -6,10 +6,14 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
-public class ScriptEngineStudy {
+public class ScriptStudy {
 	
 	public static void main(String[] args) throws ScriptException {
-		
+		nashornExample();
+	}
+	
+	private static void nashornExample() throws ScriptException {
+		MiscStudy.printMethodName();
 		final String engineName = "Nashorn";
 		final ScriptEngineManager engineManager = new ScriptEngineManager();
 		final ScriptEngine engine = engineManager.getEngineByName(engineName);
@@ -25,6 +29,7 @@ public class ScriptEngineStudy {
 				"print('c: ' + c); " +
 				"print('Goodbye!');";
 		engine.eval(script);
+		System.out.println();
 	}
 
 }
