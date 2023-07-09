@@ -112,7 +112,7 @@ public class EnumStudy {
 			return description;
 		}
 		
-		@SuppressWarnings({ "rawtypes", "unused", "unchecked" })
+		@SuppressWarnings({"rawtypes", "unchecked"})
 		public boolean compare(Comparable a, Comparable b) {
 			switch (this) {
 				case EQUAL: return a.equals(b);
