@@ -12,6 +12,7 @@ import javax.script.ScriptException;
 
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.ContextFactory;
+import org.mozilla.javascript.NativeJavaObject;
 import org.mozilla.javascript.Scriptable;
 import org.mozilla.javascript.ScriptableObject;
 
@@ -21,6 +22,7 @@ public class ScriptStudy {
 		nashornExample();
 		rhinoCalcExample1();
 		rhinoCalcExample2();
+		rhinoCalcExample3();
 	}
 
 	private static void nashornExample() throws ScriptException {
@@ -46,7 +48,7 @@ public class ScriptStudy {
 	}
 
 	@SuppressWarnings("unchecked")
-	private static <T> T rhinoCalc(String script, Map<String, ? extends Object> params) {
+	private static <T> T rhinoCalc(String script, Map<String, ? extends Object> params, String returnVar) {
 		Context context = ContextFactory.getGlobal().enterContext();
 		try {
 			final Scriptable scope = context.initStandardObjects();
@@ -55,16 +57,28 @@ public class ScriptStudy {
 					ScriptableObject.putProperty(scope, param.getKey(), param.getValue());
 				}
 			}
-			return (T) context.evaluateString(scope, script, null, 0, null);
+			Object result = context.evaluateString(scope, script, null, 0, null);
+			if (returnVar != null) {
+				result = ScriptableObject.getProperty(scope, returnVar);
+			}
+			return (T) result;
 		} finally {
 			Context.exit();
 		}
+	}
+
+	private static <T> T rhinoCalc(String script, Map<String, ? extends Object> params) {
+		return rhinoCalc(script, params, null);
+	}
+	
+	private static <T> T rhinoCalc(String script) {
+		return rhinoCalc(script, null, null);
 	}
 	
 	private static void rhinoCalcExample1() {
 		MiscStudy.printMethodName();
 		final String script = "20 + Math.log(5)";
-		final Double result = rhinoCalc(script, null);
+		final Double result = rhinoCalc(script);
 		System.out.println("Script: " + script);
 		System.out.println("Result: " + result);
 		System.out.println();
@@ -88,4 +102,22 @@ public class ScriptStudy {
 		System.out.println();
 	}
 
+	private static void rhinoCalcExample3() {
+		MiscStudy.printMethodName();
+		final String script = 
+				"var total = p.getPrice() * qtd;" +
+				"var out = java.lang.System.out;" +
+				"out.println('Name: ' + p.getName());" +
+				"out.println('Price: ' + p.getPrice());" +
+				"out.println('Quantity: ' + qtd);" +
+				"out.println('Total: ' + total);";
+		final Product product = new Product(1L, "Mouse", 10.0, 5);
+		final Map<String, Object> params = new HashMap<>();
+		params.put("p", product);
+		params.put("qtd", 5);
+		final Double total = rhinoCalc(script, params, "total");
+		System.out.println("Result: " + total);
+		System.out.println();
+	}
+	
 }
