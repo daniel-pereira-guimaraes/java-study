@@ -41,7 +41,7 @@ public class LambdaStudy {
 	private static void sortByLength() {
 		MiscStudy.printMethodName();
 		List<String> names = Arrays.asList("Joe", "Gilbert", "Amelia", "Jhon", "Bob");
-		names.sort((a,b) -> Integer.valueOf(a.length()).compareTo(b.length())); 
+		names.sort((a,b) -> Integer.compare(a.length(), b.length())); 
 		names.forEach(s -> System.out.println(s.toUpperCase()));
 		System.out.println();
 	}
@@ -78,7 +78,7 @@ public class LambdaStudy {
 	private static void convertList1() {
 		MiscStudy.printMethodName();
 		
-		List<Product> products = new ArrayList<Product>();
+		List<Product> products = new ArrayList<>();
 		products.add(new Product("TV", 300.0));
 		products.add(new Product("Mouse", 10.0));
 		products.add(new Product("Keyboard", 15.0));
@@ -92,7 +92,7 @@ public class LambdaStudy {
 	private static void convertList2() {
 		MiscStudy.printMethodName();
 		
-		List<Product> products = new ArrayList<Product>();
+		List<Product> products = new ArrayList<>();
 		products.add(new Product("TV", 300.0));
 		products.add(new Product("Mouse", 10.0));
 		products.add(new Product("Keyboard", 15.0));

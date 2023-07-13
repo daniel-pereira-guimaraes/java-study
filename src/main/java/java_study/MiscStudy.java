@@ -1,6 +1,6 @@
 package java_study;
 
-final public class MiscStudy {
+public final class MiscStudy {
 	
 	public static void main(String[] args) {
 		testGetMethodName();
