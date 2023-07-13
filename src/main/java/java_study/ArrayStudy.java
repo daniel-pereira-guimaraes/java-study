@@ -5,6 +5,8 @@ import java.util.Random;
 
 public class ArrayStudy {
 
+	private static final Random rand = new Random();
+	
 	public static void main(String[] args) {
 		arraySort();
 		parallelArraySort();
@@ -13,7 +15,6 @@ public class ArrayStudy {
 	private static void arraySort() {
 		MiscStudy.printMethodName();
 		final int[] values = new int[10];
-		final Random rand = new Random();
 		for (int i = 0; i < values.length; i++) {
 			values[i] = rand.nextInt(20);
 		}
@@ -33,7 +34,6 @@ public class ArrayStudy {
 		final int[] values2 = new int[size];
 
 		System.out.println("Generating random values...");
-		final Random rand = new Random();
 		for (int i = 0; i < values1.length; i++) {
 			int value = rand.nextInt(255);
 			values1[i] = value;

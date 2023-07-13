@@ -19,6 +19,9 @@ import javax.mail.internet.MimeMultipart;
 
 public class SmtpStudy {
 	
+	private static final String MIME_TEXT_HTML = "text/html";
+	private static final String ENV_TO_MAIL = "TO_MAIL";
+	private static final String ENV_FROM_MAIL = "FROM_MAIL";
 	static final String MSG_SUBJECT = "Message subject";
 	static final String TEXT_BODY = "Body message example.";
 	static final String HTML_BODY = "<h1>Test message</h1><p>This is an example of an <b>HTML</b> message.</p>";
@@ -52,6 +55,7 @@ public class SmtpStudy {
 
 		// Get session object with authentication.
 		final Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
 				return new PasswordAuthentication(user, password);
 			}
@@ -76,8 +80,8 @@ public class SmtpStudy {
 		MiscStudy.printMethodName();
 		final Session session = setupMailServer();
 		try {
-			final String fromMail = System.getenv("FROM_MAIL"); // sender@mailserver.com
-			final String toMail = System.getenv("TO_MAIL"); // recipient@mailserver.com
+			final String fromMail = System.getenv(ENV_FROM_MAIL); // sender@mailserver.com
+			final String toMail = System.getenv(ENV_TO_MAIL); // recipient@mailserver.com
 
 			final MimeMessage message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(fromMail));
@@ -96,14 +100,14 @@ public class SmtpStudy {
 		MiscStudy.printMethodName();
 		final Session session = setupMailServer();
 		try {
-			final String fromMail = System.getenv("FROM_MAIL"); // sender@mailserver.com
-			final String toMail = System.getenv("TO_MAIL"); // recipient@mailserver.com
+			final String fromMail = System.getenv(ENV_FROM_MAIL); // sender@mailserver.com
+			final String toMail = System.getenv(ENV_TO_MAIL); // recipient@mailserver.com
 
 			final MimeMessage message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(fromMail));
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(toMail));
 			message.setSubject(MSG_SUBJECT);
-			message.setContent(HTML_BODY, "text/html");
+			message.setContent(HTML_BODY, MIME_TEXT_HTML);
 			
 			sendEmail(message);
 		} 
@@ -116,14 +120,14 @@ public class SmtpStudy {
 		MiscStudy.printMethodName();
 		final Session session = setupMailServer();
 		try {
-			final String fromMail = System.getenv("FROM_MAIL"); // sender@mailserver.com
-			final String toMail = System.getenv("TO_MAIL"); // recipient@mailserver.com
+			final String fromMail = System.getenv(ENV_FROM_MAIL); // sender@mailserver.com
+			final String toMail = System.getenv(ENV_TO_MAIL); // recipient@mailserver.com
 
 			final MimeBodyPart attachmentPart = new MimeBodyPart();
 			attachmentPart.attachFile(new File(FILE_PATH));
 			
 			final MimeBodyPart htmlPart = new MimeBodyPart();
-			htmlPart.setContent(HTML_BODY, "text/html");
+			htmlPart.setContent(HTML_BODY, MIME_TEXT_HTML);
 			
 			final Multipart multipart = new MimeMultipart();
 			multipart.addBodyPart(htmlPart);

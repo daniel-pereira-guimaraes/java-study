@@ -1,6 +1,7 @@
 package java_study;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
 public class Base64Study {
@@ -17,8 +18,8 @@ public class Base64Study {
 		MiscStudy.printMethodName();
 		
 		final String input = "I like Java";
-		final String encoded = Base64.getEncoder().encodeToString(input.getBytes("utf-8"));
-		final String decoded = new String(Base64.getDecoder().decode(encoded.getBytes()), "utf-8");
+		final String encoded = Base64.getEncoder().encodeToString(input.getBytes(StandardCharsets.UTF_8));
+		final String decoded = new String(Base64.getDecoder().decode(encoded.getBytes()), StandardCharsets.UTF_8);
 		
 		System.out.println("\tinput: " + input);
 		System.out.println("\tencoded: " + encoded);

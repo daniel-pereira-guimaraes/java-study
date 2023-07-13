@@ -49,7 +49,7 @@ public class StreamStudy {
 		MiscStudy.printMethodName();
 		
 		List<String> normal = Arrays.asList("Brazil", "Italy", "United States", "France");
-		List<String> upper = normal.stream().map(s -> s.toUpperCase()).collect(Collectors.toList());
+		List<String> upper = normal.stream().map(String::toUpperCase).collect(Collectors.toList());
 		
 		System.out.println("normal: " + normal);
 		System.out.println("upper: " + upper);
@@ -82,7 +82,7 @@ public class StreamStudy {
 		MiscStudy.printMethodName();
 		
 		List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
-		Integer sum = list.stream().reduce(Integer::sum).get();
+		Integer sum = list.stream().reduce(Integer::sum).orElse(0);
 		
 		System.out.println("list: " + list);
 		System.out.println("sum: " + sum);
@@ -147,7 +147,7 @@ public class StreamStudy {
 	private static void sortDesc1() {
 		MiscStudy.printMethodName();
 		
-		Comparator<Integer> comp = (a, b) -> a.compareTo(b);
+		Comparator<Integer> comp = Comparable::compareTo;
 		
 		List<Integer> list = Arrays.asList(3, 1, 5, 2, 8, 4, 10);
 		List<Integer> sorted = list.stream().sorted(comp.reversed()).collect(Collectors.toList());
@@ -208,8 +208,8 @@ public class StreamStudy {
 				new Product(5L, "Monitor", 60.0, 3),
 				new Product(6L, "Printer", 60.0, 0));
 		
-		final Function<Product, Double> byPrice = p -> p.getPrice();
-		final Function<Product, Integer> byStock = p -> p.getStock();
+		final Function<Product, Double> byPrice = Product::getPrice;
+		final Function<Product, Integer> byStock = Product::getStock;
 		final Comparator<Product> comparator = Comparator.comparing(byPrice).reversed().thenComparing(byStock);
 		
 		final List<Product> sorted = list.stream().sorted(comparator).collect(Collectors.toList());

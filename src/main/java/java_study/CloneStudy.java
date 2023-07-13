@@ -4,9 +4,6 @@ import java.io.IOException;
 
 import org.apache.commons.lang3.SerializationUtils;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.exc.StreamReadException;
-import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
@@ -19,7 +16,7 @@ public class CloneStudy {
 			cloneWidhGson();
 			cloneWidhJackson();
 		} 
-		catch(Throwable e) {
+		catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -60,7 +57,7 @@ public class CloneStudy {
 		System.out.println();
 	}
 	
-	private static void cloneWidhJackson() throws StreamReadException, DatabindException, JsonProcessingException, IOException {
+	private static void cloneWidhJackson() throws IOException {
 		MiscStudy.printMethodName();
 		
 		Product p1 = new Product(100L, "Keyboard", 15.0, 10, new ProductGroup(1L, "Eletronics"));
