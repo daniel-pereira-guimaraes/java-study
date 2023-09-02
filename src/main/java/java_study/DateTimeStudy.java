@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
+import java.time.Period;
 import java.time.Year;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -35,6 +36,7 @@ public class DateTimeStudy {
 		minusPlusDateTime();
 		instantOperations();
 		showZoneIds();
+		minusPlusPeriod();
 	}
 	
 	private static void makeAndFormatDate() throws ParseException {
@@ -402,5 +404,19 @@ public class DateTimeStudy {
 		return localDate;
 	}
 	
+	private static void minusPlusPeriod() {
+	    
+    	    MiscStudy.printMethodName();
+	    final LocalDate d = LocalDate.now();
+	    System.out.println("Today: " + d);
+	    System.out.println("Today + 2 days: " + d.plus(Period.ofDays(2)));
+	    System.out.println("Today - 2 days: " + d.plus(Period.ofDays(-2)));
+	    System.out.println("Today + 1 week: " + d.plus(Period.ofWeeks(1)));
+    	    System.out.println("Today + 1 month: " + d.plus(Period.ofMonths(1)));
+    	    System.out.println("Today + 1 year: " + d.plus(Period.ofYears(1)));
+    	    System.out.println("Today + 1 year + 2 months + 3 days: " + d.plus(Period.of(1,2,3)));
+    	    System.out.println();
+	    
+	}
 	
 }
