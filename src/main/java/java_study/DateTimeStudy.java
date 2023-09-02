@@ -37,6 +37,7 @@ public class DateTimeStudy {
 		instantOperations();
 		showZoneIds();
 		minusPlusPeriod();
+		periodBetween();
 	}
 	
 	private static void makeAndFormatDate() throws ParseException {
@@ -417,6 +418,28 @@ public class DateTimeStudy {
     	    System.out.println("Today + 1 year + 2 months + 3 days: " + d.plus(Period.of(1,2,3)));
     	    System.out.println();
 	    
+	}
+	
+	private static void periodBetween() {
+
+	    MiscStudy.printMethodName();
+	    final LocalDate d1 = LocalDate.now().minusMonths(1).minusDays(2);
+	    final LocalDate d2 = LocalDate.now().plusMonths(2).plusDays(3);
+	    final Period p1 = Period.between(d1, d2);
+	    final Period p2 = Period.between(d2, d1);
+	    System.out.println("d1: " + d1);
+	    System.out.println("d2: " + d2);
+	    System.out.println("p1: " + p1);
+	    System.out.println("p1: " + 
+		    p1.getYears() + " years, " + 
+		    p1.getMonths() + " months and " + 
+		    p1.getDays() + " days");
+	    System.out.println("p2: " + p2);
+	    System.out.println("p2: " + 
+		    p2.getYears() + " years, " + 
+		    p2.getMonths() + " months and " + 
+		    p2.getDays() + " days");
+	    System.out.println();
 	}
 	
 }
