@@ -10,6 +10,7 @@ public class StringStudy {
 	public static void main(String[] args) {
 		stringBuilder1();
 		stringBuilder2();
+		stringBuilderReverse();
 		concatSpeedTest();
 		testStripAccents();
 		testStringTokenizer();
@@ -50,6 +51,12 @@ public class StringStudy {
 			.append(10);
 		System.out.println(sb.toString());
 		System.out.println();
+	}
+	
+	private static void stringBuilderReverse() {
+	    MiscStudy.printMethodName();
+	    System.out.println(new StringBuilder("Java").reverse());
+	    System.out.println();
 	}
 	
 	private static void concatSpeedTest() {
