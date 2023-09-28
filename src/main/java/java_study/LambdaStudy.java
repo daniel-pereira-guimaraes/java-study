@@ -13,6 +13,11 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+@FunctionalInterface
+interface Validation<T> {
+    boolean check(T value);
+}
+
 public class LambdaStudy {
 	
 	private static int compareLetterCount(String a, String b) {
@@ -36,6 +41,7 @@ public class LambdaStudy {
 		printFunctionResult(a -> 2 * a);
 		printData((label, value) -> System.out.println(label + ": " + value));
 		printData(DataPrinter::printLabelEqualValue);
+		testValidation();
 	}
 
 	private static void sortByLength() {
@@ -191,6 +197,18 @@ public class LambdaStudy {
 			dataPrinter.print(entry.getKey(), entry.getValue());
 		}
 		System.out.println();
+	}
+	
+	private static void testValidation() {
+	    MiscStudy.printMethodName();
+	    
+	    final Validation<Integer> isEven = n -> n % 2 == 0;
+	    
+	    for (int i = 0; i < 10; i++) {
+		System.out.println(i + " is " + (isEven.check(i) ? "even" : "odd"));
+	    }
+	    
+	    System.out.println();	    
 	}
 
 }
